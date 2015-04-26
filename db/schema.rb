@@ -11,16 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426041827) do
+ActiveRecord::Schema.define(version: 20150426042831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "issues", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string   "url",        null: false
+    t.text     "desc"
+    t.integer  "issue_id"
+    t.integer  "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "links", ["issue_id"], name: "index_links_on_issue_id", using: :btree
+  add_index "links", ["manager_id"], name: "index_links_on_manager_id", using: :btree
 
   create_table "managers", force: :cascade do |t|
     t.string   "email",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "managers", ["email"], name: "index_managers_on_email", using: :btree
 
   create_table "subscribers", force: :cascade do |t|
     t.string   "email",                     null: false
@@ -29,5 +49,8 @@ ActiveRecord::Schema.define(version: 20150426041827) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  add_index "subscribers", ["email"], name: "index_subscribers_on_email", using: :btree
+  add_index "subscribers", ["uuid"], name: "index_subscribers_on_uuid", using: :btree
 
 end
