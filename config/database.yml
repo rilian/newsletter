@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: it_watch_dev
+
+test:
+  <<: *default
+  database: it_watch_test
+
+production:
+  <<: *default
+  database: it_watch_prod
