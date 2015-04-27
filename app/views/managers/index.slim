@@ -1,0 +1,14 @@
+h1 Managers
+
+table
+  tr
+    th #
+    th Email
+    th Actions
+
+  - @managers.each do |manager|
+    tr
+      td #{manager.id}
+      td #{manager.email}
+      td
+        a href="#{manager_path(manager)}" data-method="delete" Delete
