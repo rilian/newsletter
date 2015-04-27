@@ -3,9 +3,9 @@ h1 Welcome
 h2
   | Subscribe for friday night IT Links newsletter
 
-form
-  input name="email" type="text"
-  input name="submit" value="Subscribe" type="submit"
+= form_for @subscriber do |f|
+  = f.text_field :email
+  = f.submit
 
 h2
   | Past Issues
