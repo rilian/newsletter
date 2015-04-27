@@ -1,0 +1,7 @@
+h1 New Subscriber
+
+= @subscriber.errors.full_messages.join(', ')
+
+= form_for @subscriber do |f|
+  = f.text_field :email
+  = f.submit

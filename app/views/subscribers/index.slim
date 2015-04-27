@@ -4,8 +4,15 @@ table
   tr
     th #
     th Email
+    th Status
     th Date
-  tr
-    td 1
-    td email@example.com
-    td 1 Jan 2015
+    th Actions
+
+  - @subscribers.each do |s|
+    tr
+      td #{s.id}
+      td #{s.email}
+      td #{s.is_active ? 'subscribed' : 'unsubscribed' }
+      td #{s.created_at.strftime('%d %b %Y')}
+      td
+        a href="#{manage_subscribers_path(uuid: s.uuid)}" Manage
