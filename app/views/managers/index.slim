@@ -1,5 +1,9 @@
 h1 Managers
 
+ul
+  li
+    a href="#{new_manager_path}" New Manager
+
 table
   tr
     th #
@@ -11,4 +15,6 @@ table
       td #{manager.id}
       td #{manager.email}
       td
+        a href="#{edit_manager_path(manager)}" Edit
+        br
         a href="#{manager_path(manager)}" data-method="delete" Delete

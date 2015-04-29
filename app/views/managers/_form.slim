@@ -1,0 +1,5 @@
+= @manager.errors.full_messages.join(', ')
+
+= form_for @manager do |f|
+  = f.text_field :email
+  = f.submit

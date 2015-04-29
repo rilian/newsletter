@@ -4,6 +4,7 @@ class ManagersController < ApplicationController
   end
 
   def new
+    @manager = Manager.new
   end
 
   def create
@@ -16,6 +17,7 @@ class ManagersController < ApplicationController
   end
 
   def edit
+    @manager = Manager.find(params[:id])
   end
 
   def update
@@ -23,7 +25,7 @@ class ManagersController < ApplicationController
     if @manager.update(update_manager_params)
       redirect_to managers_path
     else
-      render :new
+      render :edit
     end
   end
 
