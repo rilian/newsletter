@@ -4,6 +4,7 @@ class SubscribersController < ApplicationController
   end
 
   def new
+    @subscriber = Subscriber.new
   end
 
   def create
@@ -15,10 +16,6 @@ class SubscribersController < ApplicationController
     end
   end
 
-  def manage
-    @subscriber = Subscriber.find_by_uuid(params[:uuid])
-  end
-
   def update
     @subscriber = Subscriber.find_by_uuid(params[:uuid])
     if @subscriber.update(update_subscriber_params)
@@ -26,6 +23,10 @@ class SubscribersController < ApplicationController
     else
       render :manage
     end
+  end
+
+  def manage
+    @subscriber = Subscriber.find_by_uuid(params[:uuid])
   end
 
 private
