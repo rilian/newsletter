@@ -10,8 +10,7 @@ h2
 h2
   | Past Issues
   ul
-    li
-      a href="#url_1" url_1
-    li
-      a href="#url_2" url_2
+    - @issues.each do |i|
+      li
+        a href="#{issue_path(i)}" #{i.title}
 
