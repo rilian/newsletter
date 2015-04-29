@@ -1,0 +1,12 @@
+h1 New Issue
+
+= @issue.errors.full_messages.join(', ')
+
+h2 These links will go to the Issue:
+
+ul
+  - @links.each do |l|
+    li
+      p #{l.inspect}
+
+= render 'form'
