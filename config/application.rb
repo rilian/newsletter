@@ -15,6 +15,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module ItWatch
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -31,5 +33,7 @@ module ItWatch
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_mailer.default_options = { from: ENV['MAIL_FROM'] }
   end
 end
