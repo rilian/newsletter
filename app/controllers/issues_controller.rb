@@ -19,8 +19,13 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(create_issue_params)
     if @issue.save
-      # assign new Links to the Issue
+      # Assign new Links to the Issue
       Link.without_issue.update_all(issue_id: @issue.id)
+
+      # Send
+      Subscriber.active.each do |subscriber|
+        IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
+      end
 
       redirect_to issues_path
     else
