@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'slim-rails'
+gem 'dotenv-rails'
 
 group :development do
   gem 'quiet_assets'
