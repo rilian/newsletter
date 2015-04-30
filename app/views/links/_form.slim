@@ -1,0 +1,12 @@
+= @link.errors.full_messages.join(', ')
+
+= form_for @link do |f|
+  = f.label :url do
+    | URL
+    = f.text_field :url
+  br
+  = f.label :desc do
+    | Description
+  = f.text_area :desc
+  br
+  = f.submit

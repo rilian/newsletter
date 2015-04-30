@@ -1,0 +1,27 @@
+h1 Links
+
+ul
+  li
+    a href="#{new_link_path}" New Link
+
+table
+  tr
+    th #
+    th URL
+    th Desc
+    th Issue
+    th Manager
+    th Actions
+
+  - @links.each do |l|
+    tr
+      td #{l.id}
+      td
+        a href="#{l.url}" #{l.url}
+      td #{l.desc}
+      td #{l.issue_title}
+      td #{l.manager_email}
+      td
+        a href="#{edit_link_path(l)}" Edit
+        br
+        a href="#{link_path(l)}" data-method="delete" Delete
