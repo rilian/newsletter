@@ -1,0 +1,9 @@
+h1 #{@issue.title}
+
+ul
+  - @issue.links.each do |l|
+    li
+      p
+        a href="#{l.url}" #{l.url}
+        br
+        span #{l.desc}

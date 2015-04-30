@@ -3,6 +3,10 @@ class IssuesController < ApplicationController
     @issues = Issue.all
   end
 
+  def show
+    @issue = Issue.find(params[:id])
+  end
+
   def new
     @links = Link.without_issue.all
     if @links.size == 0

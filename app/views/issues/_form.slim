@@ -1,3 +1,6 @@
 = form_for @issue do |f|
-  = f.text_field :title
+  = f.label :title do
+    | Title
+    = f.text_field :title
+  br
   = f.submit
