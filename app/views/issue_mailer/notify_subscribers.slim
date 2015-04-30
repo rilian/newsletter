@@ -1,4 +1,4 @@
-p hi #{@subscriber.email},
+p hi #{@subscriber.email.split('@').first},
 
 p There is a new IT Watch Issue №#{@issue.id}: #{@issue.title}
 
