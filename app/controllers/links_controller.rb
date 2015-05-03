@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :authenticate_manager!
 
   def index
-    @links = Link.all
+    @links = Link.all.order('issue_id IS NOT NULL').order(id: :desc)
   end
 
   def new

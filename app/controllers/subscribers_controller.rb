@@ -2,7 +2,7 @@ class SubscribersController < ApplicationController
   before_action :authenticate_manager!, except: %i[new create update manage]
 
   def index
-    @subscribers = Subscriber.all
+    @subscribers = Subscriber.all.order(id: :desc)
   end
 
   def new

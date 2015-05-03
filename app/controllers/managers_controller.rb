@@ -2,7 +2,7 @@ class ManagersController < ApplicationController
   before_action :authenticate_manager!
 
   def index
-    @managers = Manager.all
+    @managers = Manager.all.order(id: :desc)
   end
 
   def new

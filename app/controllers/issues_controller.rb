@@ -2,7 +2,7 @@ class IssuesController < ApplicationController
   before_action :authenticate_manager!, except: %i[new create edit update destroy]
 
   def index
-    @issues = Issue.all
+    @issues = Issue.all.order(id: :desc)
   end
 
   def show
