@@ -13,7 +13,8 @@ table
   - @managers.each do |manager|
     tr
       td #{manager.id}
-      td #{manager.email}
+      td
+        a href="#{edit_manager_path(manager)}" #{manager.email}
       td
         a href="#{edit_manager_path(manager)}" Edit
         br

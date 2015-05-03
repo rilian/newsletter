@@ -18,7 +18,11 @@ table
       td
         a href="#{l.url}" #{l.url}
       td #{l.desc}
-      td #{l.issue_title}
+      td
+        - if l.issue.present?
+          a href="#{issue_path(l.issue)}" ##{l.issue_id}
+        - else
+          span
       td
         a href="#{edit_link_path(l)}" Edit
         br

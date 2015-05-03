@@ -15,7 +15,8 @@ table
   - @subscribers.each do |s|
     tr
       td #{s.id}
-      td #{s.email}
+      td
+        a href="#{manage_subscribers_path(uuid: s.uuid)}" #{s.email}
       td #{s.is_active ? 'subscribed' : 'unsubscribed' }
       td #{s.created_at.strftime('%d %b %Y')}
       td
