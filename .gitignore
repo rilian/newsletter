@@ -5,3 +5,4 @@
 /tmp
 *.swp
 .env
+config/database.yml
