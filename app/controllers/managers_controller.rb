@@ -24,7 +24,11 @@ class ManagersController < ApplicationController
 
   def update
     @manager = Manager.find(params[:id])
-    if @manager.update(update_manager_params)
+
+    params = update_manager_params
+    params.delete(:password) if params[:password].blank?
+
+    if @manager.update(params)
       redirect_to managers_path
     else
       render :edit
