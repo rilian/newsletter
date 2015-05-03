@@ -1,4 +1,6 @@
 class ManagersController < ApplicationController
+  before_action :authenticate_manager!
+
   def index
     @managers = Manager.all
   end
@@ -38,10 +40,10 @@ class ManagersController < ApplicationController
 private
 
   def create_manager_params
-    params.require(:manager).permit(:email)
+    params.require(:manager).permit(:email, :password)
   end
 
   def update_manager_params
-    params.require(:manager).permit(:email)
+    params.require(:manager).permit(:email, :password)
   end
 end

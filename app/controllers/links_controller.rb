@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  before_action :authenticate_manager!
+
   def index
     @links = Link.all
   end

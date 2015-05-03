@@ -1,4 +1,6 @@
 class IssuesController < ApplicationController
+  before_action :authenticate_manager!, except: %i[new create edit update destroy]
+
   def index
     @issues = Issue.all
   end
@@ -52,7 +54,7 @@ class IssuesController < ApplicationController
     redirect_to issues_path
   end
 
-  private
+private
 
   def create_issue_params
     params.require(:issue).permit(:title)
