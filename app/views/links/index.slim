@@ -10,7 +10,6 @@ table
     th URL
     th Desc
     th Issue
-    th Manager
     th Actions
 
   - @links.each do |l|
@@ -20,7 +19,6 @@ table
         a href="#{l.url}" #{l.url}
       td #{l.desc}
       td #{l.issue_title}
-      td #{l.manager_email}
       td
         a href="#{edit_link_path(l)}" Edit
         br
