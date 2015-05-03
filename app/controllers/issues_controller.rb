@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_manager!, except: %i[new create edit update destroy]
+  before_action :authenticate_manager!, except: %i[index show]
 
   def index
     @issues = Issue.all.order(id: :desc)

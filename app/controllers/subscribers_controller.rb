@@ -12,7 +12,7 @@ class SubscribersController < ApplicationController
   def create
     @subscriber = Subscriber.new(create_subscriber_params)
     if @subscriber.save
-      redirect_to root_path
+      redirect_to manage_subscribers_path(uuid: @subscriber.uuid)
     else
       render :new
     end
@@ -21,7 +21,7 @@ class SubscribersController < ApplicationController
   def update
     @subscriber = Subscriber.find_by_uuid(params[:uuid])
     if @subscriber.update(update_subscriber_params)
-      redirect_to root_path
+      redirect_to manage_subscribers_path(uuid: @subscriber.uuid)
     else
       render :manage
     end
