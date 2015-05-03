@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :managers
   default_url_options host: ENV['DOMAIN']
 
   root 'home#index'

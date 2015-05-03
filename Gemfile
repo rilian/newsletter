@@ -9,6 +9,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'dotenv-rails'
+gem 'devise'
 
 group :development do
   gem 'quiet_assets'

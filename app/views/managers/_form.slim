@@ -5,4 +5,8 @@
     | Email
     = f.text_field :email
   br
+  = f.label :password do
+    | Password
+    = f.text_field :password, value: ''
+  br
   = f.submit
