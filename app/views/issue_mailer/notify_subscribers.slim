@@ -1,6 +1,6 @@
 p hi #{@subscriber.email.split('@').first},
 
-p There is a new IT Watch Issue №#{@issue.id}: #{@issue.title}
+p There is a new IT Watch Issue ##{@issue.id}: #{@issue.title}
 
 p
   - @issue.links.each do |link|
@@ -10,10 +10,13 @@ p
       | #{link.desc}
 
 p
-  | Read issue online:
+  | Read this issue online:
   br
   | #{issue_url(@issue, host: ENV['DOMAIN'])}
+
 p
-  | You can manage your subscription here:
-  br
-  | #{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}
+  sub
+    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe or re-subscribe
+    br
+    | Powered by&nbsp;
+    a href="https://github.com/rilian/it-watch" rilian/it-watch
