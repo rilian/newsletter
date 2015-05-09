@@ -6,6 +6,6 @@ class Issue < ActiveRecord::Base
 private
 
   def generate_title
-    update(title: "Newsletter Issue ##{id}") if title.blank?
+    update(title: "Issue ##{id}") if title.blank?
   end
 end

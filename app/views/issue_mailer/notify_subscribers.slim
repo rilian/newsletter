@@ -1,7 +1,7 @@
 p Hi #{@subscriber.email.split('@').first.capitalize},
-p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title} (#{@issue.created_at.strftime('%-d %b %Y')})
+p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title.capitalize} (#{@issue.created_at.strftime('%-d %b %Y')})
 p
-  | #{@issue.desc}
+  | #{@issue.desc.gsub("\n", '<br/>').html_safe}
 p
   - @issue.links.each do |link|
     p
