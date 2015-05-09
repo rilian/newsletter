@@ -1,5 +1,8 @@
 h1 #{@issue.title}
 
+p
+  | #{@issue.desc.gsub("\n", '<br/>').html_safe}
+
 ul
   - @issue.links.each do |l|
     li

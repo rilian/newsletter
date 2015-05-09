@@ -15,8 +15,8 @@ html
       ul
         li
           a href="#{root_path}" Home
-          li
-            a href="#{issues_path}" Issues
+        li
+          a href="#{issues_path}" Issues
         - if manager_signed_in?
           li
             a href="#{links_path}" Links
@@ -30,10 +30,11 @@ html
           li
             = link_to 'Sign in', new_session_path(:manager)
 
-
-
     .container
       - flash.each do |key, value|
         div class="#{flash_class(key)} alert-dismissable"
           = value
+
       = yield
+
+      = render 'subscribers/form'

@@ -8,7 +8,6 @@ table
   tr
     th #
     th Title
-    th Description
     th Actions
 
   - @issues.each do |issue|
@@ -16,8 +15,6 @@ table
       td #{issue.id}
       td
         a href="#{issue_path(issue)}" #{issue.title}
-      td
-        | #{issue.desc}
       td
         a href="#{edit_issue_path(issue)}" Edit
         br

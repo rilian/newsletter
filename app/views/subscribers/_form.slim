@@ -1,0 +1,7 @@
+br
+b
+  | Subscribe for friday night IT Links newsletter
+
+  = form_for Subscriber.new do |f|
+    = f.text_field :email
+    = f.submit value='Subscribe'
