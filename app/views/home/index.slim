@@ -5,7 +5,11 @@ h1 Welcome
 h2
   | Past Issues
   ul
-    - @issues.each do |i|
-      li
-        a href="#{issue_path(i)}" #{i.title}
+    - @issues.each do |issue|
+      - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
+        li
+          a href="#{issue_path(issue)}" #{issue.title.capitalize}
+      - else
+        li
+          | Issue will be sent soon!
 
