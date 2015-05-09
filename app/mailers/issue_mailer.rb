@@ -5,6 +5,6 @@ class IssueMailer < ActionMailer::Base
     @issue = issue
     @subscriber = subscriber
 
-    mail to: @subscriber.email, subject: "[IT Watch] #{@issue.title}"
+    mail to: @subscriber.email, subject: "[Newsletter] #{@issue.title}"
   end
 end

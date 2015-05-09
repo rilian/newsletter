@@ -1,6 +1,6 @@
 p hi #{@subscriber.email.split('@').first},
 
-p There is a new IT Watch Issue ##{@issue.id}: #{@issue.title}
+p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title}
 
 p
   - @issue.links.each do |link|
@@ -19,4 +19,4 @@ p
     a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe or re-subscribe
     br
     | Powered by&nbsp;
-    a href="https://github.com/rilian/it-watch" rilian/it-watch
+    a href="https://github.com/rilian/newsletter" rilian/newsletter

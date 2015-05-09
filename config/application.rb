@@ -17,7 +17,7 @@ Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
 
-module ItWatch
+module Newsletter
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
