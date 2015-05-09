@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503032410) do
+ActiveRecord::Schema.define(version: 20150509140614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150503032410) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "desc"
   end
 
   create_table "links", force: :cascade do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150503032410) do
     t.integer  "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
   end
 
   add_index "links", ["issue_id"], name: "index_links_on_issue_id", using: :btree

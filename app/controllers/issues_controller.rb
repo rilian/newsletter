@@ -11,10 +11,6 @@ class IssuesController < ApplicationController
 
   def new
     @links = Link.without_issue.all
-    if @links.size == 0
-      redirect_to root_path
-      return
-    end
     @issue = Issue.new
   end
 
@@ -57,10 +53,10 @@ class IssuesController < ApplicationController
 private
 
   def create_issue_params
-    params.require(:issue).permit(:title)
+    params.require(:issue).permit(:title, :desc)
   end
 
   def update_issue_params
-    params.require(:issue).permit(:title)
+    params.require(:issue).permit(:title, :desc)
   end
 end

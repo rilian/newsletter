@@ -1,22 +1,22 @@
-p hi #{@subscriber.email.split('@').first},
-
-p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title}
-
+p Hi #{@subscriber.email.split('@').first.capitalize},
+p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title} (#{@issue.created_at.strftime('%-d %b %Y')})
+p
+  | #{@issue.desc}
 p
   - @issue.links.each do |link|
     p
-      | #{link.url}
+      a href="#{link.url}" #{link.title}
       br
       | #{link.desc}
-
 p
-  | Read this issue online:
-  br
-  | #{issue_url(@issue, host: ENV['DOMAIN'])}
-
+  | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
+p
+  | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])}
 p
   sub
-    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe or re-subscribe
+    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe
+    br
+    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Update your subscription preferences
     br
     | Powered by&nbsp;
     a href="https://github.com/rilian/newsletter" rilian/newsletter

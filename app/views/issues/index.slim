@@ -8,14 +8,17 @@ table
   tr
     th #
     th Title
+    th Description
     th Actions
 
-  - @issues.each do |i|
+  - @issues.each do |issue|
     tr
-      td #{i.id}
+      td #{issue.id}
       td
-        a href="#{issue_path(i)}" #{i.title}
+        a href="#{issue_path(issue)}" #{issue.title}
       td
-        a href="#{edit_issue_path(i)}" Edit
+        | #{issue.desc}
+      td
+        a href="#{edit_issue_path(issue)}" Edit
         br
-        a href="#{issue_path(i)}" data-method="delete" Delete
+        a href="#{issue_path(issue)}" data-method="delete" Delete

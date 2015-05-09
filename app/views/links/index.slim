@@ -7,23 +7,26 @@ ul
 table
   tr
     th #
+    th Title
     th URL
     th Desc
     th Issue
     th Actions
 
-  - @links.each do |l|
+  - @links.each do |link|
     tr
-      td #{l.id}
+      td #{link.id}
       td
-        a href="#{l.url}" #{l.url}
-      td #{l.desc}
+        a href="#{link.url}" #{link.title}
       td
-        - if l.issue.present?
-          a href="#{issue_path(l.issue)}" ##{l.issue_id}
+        a href="#{link.url}" #{link.url}
+      td #{link.desc}
+      td
+        - if link.issue.present?
+          a href="#{issue_path(link.issue)}" ##{link.issue_id}
         - else
           span
       td
-        a href="#{edit_link_path(l)}" Edit
+        a href="#{edit_link_path(link)}" Edit
         br
-        a href="#{link_path(l)}" data-method="delete" Delete
+        a href="#{link_path(link)}" data-method="delete" Delete

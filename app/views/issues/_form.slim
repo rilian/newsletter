@@ -3,4 +3,8 @@
     | Title
     = f.text_field :title
   br
+  = f.label :desc do
+    | Description
+    = f.text_area :desc
+  br
   = f.submit
