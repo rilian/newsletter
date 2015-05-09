@@ -7,6 +7,10 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+
+    if @issue.sent_at.blank? && !manager_signed_in?
+      redirect_to issues_path and return
+    end
   end
 
   def new
