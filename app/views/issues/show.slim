@@ -7,6 +7,6 @@ ul
   - @issue.links.each do |link|
     li
       p
-        a href="#{link.url}" #{link.title}
+        a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
         br
         span #{link.desc.strip.gsub("\n", '<br/>').html_safe}

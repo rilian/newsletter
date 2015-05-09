@@ -11,24 +11,7 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    .navigation-container
-      ul
-        li
-          a href="#{root_path}" Home
-        li
-          a href="#{issues_path}" Issues
-        - if manager_signed_in?
-          li
-            a href="#{links_path}" Links
-          li
-            a href="#{subscribers_path}" Subscribers
-          li
-            a href="#{managers_path}" Managers
-          li
-            = link_to 'Sign out', destroy_manager_session_path, method: :delete
-        - else
-          li
-            = link_to 'Sign in', new_session_path(:manager)
+    = render 'shared/navigation'
 
     .container
       - flash.each do |key, value|
@@ -38,3 +21,8 @@ html
       = yield
 
       = render 'subscribers/form'
+
+      sub
+        br
+          | Powered by&nbsp;
+          a href="https://github.com/rilian/newsletter" rilian/newsletter
