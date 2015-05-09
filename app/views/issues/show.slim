@@ -1,7 +1,7 @@
 h1 #{@issue.title}
 
 p
-  | #{@issue.desc.gsub("\n", '<br/>').html_safe}
+  | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 
 ul
   - @issue.links.each do |link|
@@ -9,4 +9,4 @@ ul
       p
         a href="#{link.url}" #{link.title}
         br
-        span #{link.desc.gsub("\n", '<br/>').html_safe}
+        span #{link.desc.strip.gsub("\n", '<br/>').html_safe}

@@ -10,6 +10,6 @@ h1 New Issue
         p
           a href="#{link.url}" #{link.title}
           br
-          | #{link.desc.gsub("\n", '<br/>').html_safe}
+          | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
 
 = render 'form'
