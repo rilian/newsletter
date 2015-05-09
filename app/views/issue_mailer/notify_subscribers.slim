@@ -7,7 +7,7 @@ p
     p
       a href="#{link.url}" #{link.title}
       br
-      | #{link.desc}
+      | #{link.desc.gsub("\n", '<br/>').html_safe}
 p
   | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
 p

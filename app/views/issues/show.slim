@@ -9,4 +9,4 @@ ul
       p
         a href="#{link.url}" #{link.title}
         br
-        span #{link.desc}
+        span #{link.desc.gsub("\n", '<br/>').html_safe}

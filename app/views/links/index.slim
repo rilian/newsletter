@@ -20,7 +20,7 @@ table
         a href="#{link.url}" #{link.title}
       td
         a href="#{link.url}" #{link.url}
-      td #{link.desc}
+      td #{link.desc.gsub("\n", '<br/>').html_safe}
       td
         - if link.issue.present?
           a href="#{issue_path(link.issue)}" ##{link.issue_id}
