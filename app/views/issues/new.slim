@@ -2,14 +2,14 @@ h1 New Issue
 
 = @issue.errors.full_messages.join(', ')
 
-h2 These links will go to the Issue:
-
-ul
-  - @links.each do |link|
-    li
-      p
-        a href="#{link.url}" #{link.title}
-        br
-        | #{link.desc}
+- if @links.size > 0
+  b These links will go to the Issue:
+  ul
+    - @links.each do |link|
+      li
+        p
+          a href="#{link.url}" #{link.title}
+          br
+          | #{link.desc}
 
 = render 'form'
