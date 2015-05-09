@@ -13,4 +13,8 @@
     | Description
   = f.text_area :desc
   br
+  = f.label :issue_id do
+    | Issue
+  = f.select :issue_id, Issue.all.order(id: :desc).map { |i| [i.title, i.id] }
+  br
   = f.submit

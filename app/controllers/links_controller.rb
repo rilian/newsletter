@@ -41,10 +41,10 @@ class LinksController < ApplicationController
 private
 
   def create_link_params
-    params.require(:link).permit(:url, :desc, :title)
+    params.require(:link).permit(:url, :desc, :title, :issue_id)
   end
 
   def update_link_params
-    params.require(:link).permit(:url, :desc, :title)
+    params.require(:link).permit(:url, :desc, :title, :issue_id)
   end
 end
