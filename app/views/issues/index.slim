@@ -15,7 +15,10 @@ table
     tr
       td #{issue.id}
       td
-        a href="#{issue_path(issue)}" #{issue.title.capitalize}
+        - if issue.sent_at.present?
+          a href="#{issue_path(issue)}" #{issue.title.capitalize}
+        - else
+          | Issue will be sent soon!
       - if manager_signed_in?
         td
           a href="#{edit_issue_path(issue)}" Edit
