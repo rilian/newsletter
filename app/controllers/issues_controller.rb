@@ -20,11 +20,6 @@ class IssuesController < ApplicationController
       # Assign new Links to the Issue
       Link.without_issue.update_all(issue_id: @issue.id)
 
-      # Send
-      Subscriber.active.each do |subscriber|
-        IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
-      end
-
       redirect_to issues_path
     else
       render :new
@@ -47,6 +42,21 @@ class IssuesController < ApplicationController
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
+
+    redirect_to issues_path
+  end
+
+  def send_issue
+    @issue = Issue.find(params[:id])
+
+    redirect_to issues_path and return if @issue.sent_at.present?
+
+    @issue.update(sent_at: Time.zone.now)
+
+    Subscriber.active.each do |subscriber|
+      IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
+    end
+
     redirect_to issues_path
   end
 

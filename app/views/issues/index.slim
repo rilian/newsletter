@@ -15,9 +15,14 @@ table
     tr
       td #{issue.id}
       td
-        a href="#{issue_path(issue)}" #{issue.title}
+        a href="#{issue_path(issue)}" #{issue.title.capitalize}
       - if manager_signed_in?
         td
           a href="#{edit_issue_path(issue)}" Edit
+          br
+          - if issue.sent_at.present?
+            | Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}
+          - else
+            a href="#{send_issue_issue_path(issue)}" data-method='post' Send
           br
           a href="#{issue_path(issue)}" data-method="delete" Delete
