@@ -1,5 +1,5 @@
 p Hi #{@subscriber.email.split('@').first.capitalize},
-p There is a new Newsletter Issue ##{@issue.id}: #{@issue.title.capitalize} (#{@issue.sent_at.strftime('%-d %b %Y')})
+p There is a new Issue ##{@issue.id}: #{@issue.title.capitalize} (#{@issue.sent_at.strftime('%-d %b %Y')})
 p
   | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 p
@@ -9,9 +9,13 @@ p
       br
       | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
 p
+  | ---
+p
   | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
 p
   | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])}
+p
+  | ---
 p
   sub
     a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe
