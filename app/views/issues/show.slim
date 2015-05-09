@@ -4,9 +4,9 @@ p
   | #{@issue.desc.gsub("\n", '<br/>').html_safe}
 
 ul
-  - @issue.links.each do |l|
+  - @issue.links.each do |link|
     li
       p
-        a href="#{l.url}" #{l.url}
+        a href="#{link.url}" #{link.title}
         br
-        span #{l.desc}
+        span #{link.desc}
