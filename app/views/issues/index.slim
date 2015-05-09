@@ -8,14 +8,16 @@ table
   tr
     th #
     th Title
-    th Actions
+    - if manager_signed_in?
+      th Actions
 
   - @issues.each do |issue|
     tr
       td #{issue.id}
       td
         a href="#{issue_path(issue)}" #{issue.title}
-      td
-        a href="#{edit_issue_path(issue)}" Edit
-        br
-        a href="#{issue_path(issue)}" data-method="delete" Delete
+      - if manager_signed_in?
+        td
+          a href="#{edit_issue_path(issue)}" Edit
+          br
+          a href="#{issue_path(issue)}" data-method="delete" Delete
