@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'devise'
+gem 'puma'
+gem 'foreman'
 
 group :development do
   gem 'quiet_assets'
