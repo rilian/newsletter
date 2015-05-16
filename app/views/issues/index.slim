@@ -16,7 +16,7 @@ table
       td #{issue.id}
       td
         - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
-          a href="#{issue_path(issue)}" #{issue.title.capitalize}
+          a href="#{issue_path(issue)}" #{issue.title}
         - else
           | Issue will be sent soon!
       - if manager_signed_in?

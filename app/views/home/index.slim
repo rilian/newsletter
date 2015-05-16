@@ -8,7 +8,7 @@ h2
     - @issues.each do |issue|
       - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
         li
-          a href="#{issue_path(issue)}" #{issue.title.capitalize}
+          a href="#{issue_path(issue)}" #{issue.title}
       - else
         li
           | Issue will be sent soon!
