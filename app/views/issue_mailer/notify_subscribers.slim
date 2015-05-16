@@ -10,6 +10,8 @@ p
       a href="#{link.url}" target="_blank" #{link.title}
       br
       | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+  br
+  | PS: Your happy number of the week is #{rand(10)}.
 hr
 p
   | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
