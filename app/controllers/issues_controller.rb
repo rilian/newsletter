@@ -52,8 +52,10 @@ class IssuesController < ApplicationController
 
   def send_issue
     @issue = Issue.find(params[:id])
-
     redirect_to issues_path and return if @issue.sent_at.present?
+
+    # Assign new Links to the Issue
+    Link.without_issue.update_all(issue_id: @issue.id)
 
     @issue.update(sent_at: Time.zone.now)
 
