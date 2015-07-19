@@ -1,7 +1,7 @@
 p
   | Hi #{@subscriber.email.split('@').first},
   br
-  | Issue ##{@issue.id}: #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
+  | Issue ##{@issue.id} #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
 p
   | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 p
@@ -16,7 +16,7 @@ hr
 p
   | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
   br
-  | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])}
+  | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])} and tell your friends!
 hr
 p
   sub
