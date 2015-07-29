@@ -1,0 +1,5 @@
+@mixin transform($arguments...) {
+    -webkit-transform: $arguments;
+      -ms-transform: $arguments; // IE9
+          transform: $arguments;
+}
