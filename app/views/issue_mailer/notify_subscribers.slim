@@ -1,7 +1,7 @@
 p
   | Hi #{@subscriber.email.split('@').first},
   br
-  | Issue ##{@issue.id} #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
+  | #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
 p
   | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 p
