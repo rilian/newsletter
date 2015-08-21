@@ -1,23 +1,26 @@
-h1 Subscribers
+.columns
+  = render 'shared/sidebar'
+  .column class='three-fourths'
+    h1 Subscribers
 
-ul
-  li
-    a href="#{new_subscriber_path}" New Subscriber
+    ul
+      li
+        a href="#{new_subscriber_path}" New Subscriber
 
-table
-  tr
-    th #
-    th Email
-    th Status
-    th Date
-    th Actions
+    table
+      tr
+        th #
+        th Email
+        th Status
+        th Date
+        th Actions
 
-  - @subscribers.each do |s|
-    tr
-      td #{s.id}
-      td
-        a href="#{manage_subscribers_path(uuid: s.uuid)}" #{s.email}
-      td #{s.is_active ? 'subscribed' : 'unsubscribed' }
-      td #{s.created_at.strftime('%d %b %Y')}
-      td
-        a href="#{manage_subscribers_path(uuid: s.uuid)}" Manage
+      - @subscribers.each do |s|
+        tr
+          td #{s.id}
+          td
+            a href="#{manage_subscribers_path(uuid: s.uuid)}" #{s.email}
+          td #{s.is_active ? 'subscribed' : 'unsubscribed' }
+          td #{s.created_at.strftime('%d %b %Y')}
+          td
+            a href="#{manage_subscribers_path(uuid: s.uuid)}" Manage

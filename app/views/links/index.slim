@@ -1,32 +1,35 @@
-h1 Links
+.columns
+  = render 'shared/sidebar'
+  .column class='three-fourths'
+    h1 Links
 
-ul
-  li
-    a href="#{new_link_path}" New Link
+    ul
+      li
+        a href="#{new_link_path}" New Link
 
-table
-  tr
-    th #
-    th Title
-    th URL
-    th Desc
-    th Issue
-    th Actions
+    table
+      tr
+        th #
+        th Title
+        th URL
+        th Desc
+        th Issue
+        th Actions
 
-  - @links.each do |link|
-    tr
-      td #{link.id}
-      td
-        a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-      td
-        a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
-      td #{link.desc.strip.gsub("\n", '<br/>').html_safe}
-      td
-        - if link.issue.present?
-          a href="#{issue_path(link.issue)}" ##{link.issue_id}
-        - else
-          span
-      td
-        a href="#{edit_link_path(link)}" Edit
-        br
-        a href="#{link_path(link)}" data-method="delete" Delete
+      - @links.each do |link|
+        tr
+          td #{link.id}
+          td
+            a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
+          td
+            a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
+          td #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+          td
+            - if link.issue.present?
+              a href="#{issue_path(link.issue)}" ##{link.issue_id}
+            - else
+              span
+          td
+            a href="#{edit_link_path(link)}" Edit
+            br
+            a href="#{link_path(link)}" data-method="delete" Delete

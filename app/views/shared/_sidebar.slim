@@ -1,0 +1,8 @@
+.column.one-fourth
+  - if manager_signed_in?
+    nav.menu
+      = sidemenu_link_to('Issues', issues_path, icon: 'mail')
+      = sidemenu_link_to('Links', links_path, icon: 'link')
+      = sidemenu_link_to('Subscribers', subscribers_path, icon: 'person')
+      = sidemenu_link_to('Managers', managers_path, icon: 'squirrel')
+

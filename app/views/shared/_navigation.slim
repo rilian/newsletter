@@ -7,11 +7,7 @@
         div.reactor
       span.newsletter Newsletter
     nav.masthead-nav
-      a href="#{issues_path}" Issues
       - if manager_signed_in?
-        a href="#{links_path}" Links
-        a href="#{subscribers_path}" Subscribers
-        a href="#{managers_path}" Managers
         = link_to 'Sign out', destroy_manager_session_path, method: :delete
       - else
         = link_to 'Sign in', new_session_path(:manager)
