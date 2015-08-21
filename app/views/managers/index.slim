@@ -3,22 +3,23 @@
   .column class='three-fourths'
     h1 Managers
 
-    ul
-      li
-        a href="#{new_manager_path}" New Manager
+    p
+      a class='btn btn-sm btn-primary' href="#{new_manager_path}"
+        span.octicon.octicon-plus
+        | New Manager
 
-    table
-      tr
-        th #
-        th Email
-        th Actions
-
-      - @managers.each do |manager|
+    table.manager-table
+      thead
         tr
-          td #{manager.id}
-          td
-            a href="#{edit_manager_path(manager)}" #{manager.email}
-          td
-            a href="#{edit_manager_path(manager)}" Edit
-            br
-            a href="#{manager_path(manager)}" data-method="delete" Delete
+          th #
+          th Email
+          th.actions Actions
+      tbody
+        - @managers.each do |manager|
+          tr
+            td #{manager.id}
+            td
+              a href="#{edit_manager_path(manager)}" #{manager.email}
+            td.actions
+              a class="btn octicon octicon-pencil" href="#{edit_manager_path(manager)}"
+              a class="btn btn-danger octicon octicon-flame" href="#{manager_path(manager)}" data-method="delete"

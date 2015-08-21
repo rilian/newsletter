@@ -3,24 +3,26 @@
   .column class='three-fourths'
     h1 Subscribers
 
-    ul
-      li
-        a href="#{new_subscriber_path}" New Subscriber
+    p
+      a class='btn btn-sm btn-primary' href="#{new_subscriber_path}"
+        span.octicon.octicon-plus
+        | New Subscriber
 
     table
-      tr
-        th #
-        th Email
-        th Status
-        th Date
-        th Actions
-
-      - @subscribers.each do |s|
+      thead
         tr
-          td #{s.id}
-          td
-            a href="#{manage_subscribers_path(uuid: s.uuid)}" #{s.email}
-          td #{s.is_active ? 'subscribed' : 'unsubscribed' }
-          td #{s.created_at.strftime('%d %b %Y')}
-          td
-            a href="#{manage_subscribers_path(uuid: s.uuid)}" Manage
+          th #
+          th Email
+          th Status
+          th Date
+          th.actions Actions
+      tbody
+        - @subscribers.each do |s|
+          tr
+            td #{s.id}
+            td
+              a href="#{manage_subscribers_path(uuid: s.uuid)}" #{s.email}
+            td #{s.is_active ? 'subscribed' : 'unsubscribed' }
+            td #{s.created_at.strftime('%d %b %Y')}
+            td.actions
+              a class="btn octicon octicon-pencil" href="#{manage_subscribers_path(uuid: s.uuid)}"

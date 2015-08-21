@@ -20,8 +20,8 @@ html
           = value
 
       = yield
-
-      = render 'subscribers/form'
+      - unless manager_signed_in?
+        = render 'subscribers/form'
       .footer
         | Powered by&nbsp;
         a href="https://github.com/rilian/newsletter" rilian/newsletter
