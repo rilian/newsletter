@@ -1,12 +1,14 @@
-h1 #{@issue.title}
+.columns
+  .one-half.column.centered
+    h1 #{@issue.title}
 
-p
-  | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
+    p
+      | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 
-ul
-  - @issue.links.each do |link|
-    li
-      p
-        a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-        br
-        span #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+    ul
+      - @issue.links.each do |link|
+        li
+          p
+            a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
+            br
+            span #{link.desc.strip.gsub("\n", '<br/>').html_safe}

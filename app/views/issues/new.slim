@@ -1,15 +1,18 @@
-h1 New Issue
+.columns
+  .one-half.column.centered
 
-= @issue.errors.full_messages.join(', ')
+    h1 New Issue
 
-- if @links.size > 0
-  b These links will go to the Issue:
-  ul
-    - @links.each do |link|
-      li
-        p
-          a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-          br
-          | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+    = @issue.errors.full_messages.join(', ')
 
-= render 'form'
+    - if @links.size > 0
+      b These links will go to the Issue:
+      ul
+        - @links.each do |link|
+          li
+            p
+              a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
+              br
+              | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+
+    = render 'form'

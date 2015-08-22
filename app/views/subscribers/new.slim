@@ -1,7 +1,9 @@
-h1 New Subscriber
+.columns
+  .one-half.column.centered
+    h1 New Subscriber
 
-= @subscriber.errors.full_messages.join(', ')
+    = @subscriber.errors.full_messages.join(', ')
 
-= form_for @subscriber do |f|
-  = f.text_field :email
-  = f.submit value='Subscribe'
+    = form_for @subscriber do |f|
+      = f.text_field :email
+      = f.submit value='Subscribe'
