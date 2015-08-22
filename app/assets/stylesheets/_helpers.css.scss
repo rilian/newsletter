@@ -3,3 +3,9 @@
       -ms-transform: $arguments; // IE9
           transform: $arguments;
 }
+
+@mixin small-breakpoint() {
+  @media screen and (max-width: 34em) {
+    @content;
+  }
+}

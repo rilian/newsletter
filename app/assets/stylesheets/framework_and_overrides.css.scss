@@ -1,4 +1,5 @@
 @import 'primer-css/scss/primer';
+@import '_helpers';
 
 .container {
   width: auto;
@@ -14,4 +15,16 @@
   line-height: 1.75;
   color: #7a7a7a;
   border-top: 1px solid #eee;
+}
+
+.container {
+  @include small-breakpoint() {
+    .column {
+      width: 100%;
+    }
+
+    .menu {
+      text-align: center;
+    }
+  }
 }

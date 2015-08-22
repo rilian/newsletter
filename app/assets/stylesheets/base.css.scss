@@ -1,3 +1,5 @@
+@import '_helpers';
+
 html {
     font-size: 16px
 }
@@ -9,6 +11,8 @@ body {
 
 table {
   width: 100%;
+  max-width: 100%;
+  word-break: break-all;
   thead {
     border-bottom: 1px solid;
     border-color: #777;
@@ -20,13 +24,16 @@ table {
     padding: 5px;
   }
   .actions {
-    // &:not(th) {
-    //   background-color: #EEE;
-    // }
+    @include small-breakpoint() {
+      min-width: 0;
+    }
     min-width: 110px;
     text-align: center;
     a + a {
       margin-left: 10px;
+      @include small-breakpoint() {
+        margin-left: 0;
+      }
     }
   }
 }
