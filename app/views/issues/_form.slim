@@ -1,10 +1,15 @@
 = form_for @issue do |f|
-  = f.label :title do
-    | Title
-    = f.text_field :title
-  br
-  = f.label :desc do
-    | Description
-    = f.text_area :desc
-  br
-  = f.submit edit_form_label(@issue), class: 'btn'
+  dl.form
+    dt
+      = f.label :title, 'Title'
+    dd
+      = f.text_field :title
+
+  dl.form
+    dt
+      = f.label :desc, 'Description'
+    dd
+      = f.text_area :title, class: 'description'
+
+  .form-actions
+    = f.submit edit_form_label(@issue), class: 'btn'

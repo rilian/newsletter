@@ -7,9 +7,18 @@
       b #{@subscriber.email}
 
     = form_for @subscriber do |f|
+
       = hidden_field_tag :uuid, @subscriber.uuid
-      = f.label :is_active do
-        | Subscribed
-        = f.check_box :is_active
-      br
-      = f.submit
+      dl.form
+        dt
+          = f.label :email, 'Email'
+        dd
+          = f.text_field :email
+
+      .form-checkbox
+        = f.label :is_active do
+          = f.check_box :is_active
+          em Subscribed
+
+      .form-actions
+        = f.submit edit_form_label(@subscriber), class: 'btn'

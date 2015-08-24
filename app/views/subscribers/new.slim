@@ -5,5 +5,11 @@
     = @subscriber.errors.full_messages.join(', ')
 
     = form_for @subscriber do |f|
-      = f.text_field :email
-      = f.submit value='Subscribe'
+      dl.form
+        dt
+          = f.label :email, 'Email'
+        dd
+          = f.text_field :email
+
+      .form-actions
+        = f.submit 'Subscribe', class: 'btn'
