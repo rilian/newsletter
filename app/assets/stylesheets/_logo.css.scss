@@ -6,6 +6,7 @@
   height: 50px;
   width: 60px;
   transition: width 0.1s ease-in;
+  margin-right: 0.5rem;
   & > * {
     transition: opacity 0.5s ease-in, width 0.2s ease-in, transform 0.1s ease-in;
   }
