@@ -8,9 +8,9 @@ module ApplicationHelper
   end
 
   def sidemenu_link_to(text, path, options = {})
-    ccs_class = "menu-item"
-    ccs_class += " selected" if current_page?(path)
-    options.merge!(class: ccs_class)
+    css_class = "menu-item"
+    css_class += " selected" if current_page?(path)
+    options.merge!(class: css_class)
     if icon = options[:icon]
       link_to(path, options) do
         "<span class='octicon octicon-#{icon}'></span>#{text}".html_safe
