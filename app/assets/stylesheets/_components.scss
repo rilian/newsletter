@@ -1,8 +1,16 @@
-ul.issues-list {
+ul.links-list {
   li {
     display: block;
     margin: 1rem;
-    font-size: 1.2rem;
+    a {
+      font-size: 1.2rem;
+    }
+
+    p.link-desc {
+      margin-top: 0;
+      margin-left: 1rem;
+      font-size: 1rem;
+    }
   }
 }
 
@@ -16,4 +24,9 @@ ul.issues-list {
       border-radius: 0 3px 3px 0;
     }
   }
+}
+
+p.issue-desc {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
