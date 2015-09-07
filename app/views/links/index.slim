@@ -12,9 +12,7 @@
       thead
         tr
           th #
-          th Title
-          th URL
-          th Desc
+          th Info
           th Issue
           th.actions Actions
       tbody
@@ -23,9 +21,10 @@
             td #{link.id}
             td
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-            td
+              br
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
-            td #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+              br
+              = link.desc.strip.gsub("\n", '<br/>').html_safe
             td
               - if link.issue.present?
                 a href="#{issue_path(link.issue)}" ##{link.issue_id}
