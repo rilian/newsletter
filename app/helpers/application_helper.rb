@@ -19,4 +19,10 @@ module ApplicationHelper
       link_to(text, path, options)
     end
   end
+
+  def main_container_class
+    klass = 'column three-fourths'
+    klass += ' centered' unless manager_signed_in?
+    klass
+  end
 end
