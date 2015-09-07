@@ -1,13 +1,24 @@
-h1 Manage Subscription
+.columns
+  .one-half.column.centered
+    h1 Manage Subscription
 
-p
-  | Change subscription for&nbsp;
-  b #{@subscriber.email}
+    p
+      | Change subscription for&nbsp;
+      b #{@subscriber.email}
 
-= form_for @subscriber do |f|
-  = hidden_field_tag :uuid, @subscriber.uuid
-  = f.label :is_active do
-    | Subscribed
-    = f.check_box :is_active
-  br
-  = f.submit
+    = form_for @subscriber do |f|
+
+      = hidden_field_tag :uuid, @subscriber.uuid
+      dl.form
+        dt
+          = f.label :email, 'Email'
+        dd
+          = f.text_field :email
+
+      .form-checkbox
+        = f.label :is_active do
+          = f.check_box :is_active
+          em Subscribed
+
+      .form-actions
+        = f.submit edit_form_label(@subscriber), class: 'btn'

@@ -1,15 +1,25 @@
-h1 Welcome
+.columns
+  = render 'shared/sidebar'
+  .column.three-fourths
+    h1 Welcome
 
-= render 'subscribers/form'
+    p
+      | Hi! This is newsletter that is ran by fine people from 
+      a href="railsreactor.com" RailsReactor
+      |  that is focused on gathering interesting links. 
+    p
+      | Main topics would be Ruby, JS, DB, DevOps. Ocassionally we would drop in links from other areas useful for software engineers (CSS, UX, 
+      abbr title="Functional Programming" FP
+      | , general CS, algorithms) or interesting events (a bit biased geographically because most of the team is located in Kyiv).
 
-h2
-  | Past Issues
-  ul
-    - @issues.each do |issue|
-      - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
-        li
-          a href="#{issue_path(issue)}" #{issue.title}
-      - else
-        li
-          | Issue will be sent soon!
+    h2
+      | Past Issues
+      ul
+        - @issues.each do |issue|
+          - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
+            li
+              a href="#{issue_path(issue)}" #{issue.title}
+          - else
+            li
+              | Issue will be sent soon!
 

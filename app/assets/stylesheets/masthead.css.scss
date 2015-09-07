@@ -1,0 +1,67 @@
+@import 'variables';
+@import '_logo';
+
+.masthead {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background-color: #060D15;
+  a {
+    color: rgba(255,255,255,0.5);
+    &:hover {
+      color: $rr-red;
+      text-decoration: none;
+    }
+  }
+  .masthead-logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+}
+
+@media (min-width: 34em) {
+  .masthead {
+    text-align:left;
+    .masthead-logo {
+      color: transparent;
+      &:hover {
+        color: transparent;
+      }
+      float: left;
+      .newsletter {
+        display: inline-block;
+        vertical-align: center;
+        width: 170px;
+        background-image: image-url('Newsletter.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+    }
+  }
+}
+
+.masthead-nav {
+  margin-top: 1rem;
+  font-size: 1rem;
+  a {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 1.25rem;
+    }
+  }
+  .active {
+    color: #fff;
+    font-weight: 500;
+  }
+  @media (max-width: 34em) {
+    padding-top:1rem;
+    border-top: 0.075rem solid rgba(255,255,255,0.25);
+  }
+  @media (min-width: 34em) {
+    float:right;
+    margin-top: .5rem;
+  }
+}

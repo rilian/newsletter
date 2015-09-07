@@ -1,31 +1,34 @@
-h1 Issues
+.columns
+  = render 'shared/sidebar'
+  .column class="#{manager_signed_in? ? 'three-fourths' : ''}"
+    h1 Issues
 
-ul
-  li
-    a href="#{new_issue_path}" New Issue
+    p
+      a class='btn btn-sm btn-primary' href="#{new_issue_path}"
+        span.octicon.octicon-plus
+        | New Issue
 
-table
-  tr
-    th #
-    th Title
-    - if manager_signed_in?
-      th Actions
-
-  - @issues.each do |issue|
-    tr
-      td #{issue.id}
-      td
-        - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
-          a href="#{issue_path(issue)}" #{issue.title}
-        - else
-          | Issue will be sent soon!
-      - if manager_signed_in?
-        td
-          a href="#{edit_issue_path(issue)}" Edit
-          br
-          - if issue.sent_at.present?
-            | Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}
-          - else
-            a href="#{send_issue_issue_path(issue)}" data-method='post' Send
-          br
-          a href="#{issue_path(issue)}" data-method="delete" Delete
+    table
+      thead
+        tr
+          th #
+          th Title
+          - if manager_signed_in?
+            th.actions Actions
+      tbody
+        - @issues.each do |issue|
+          tr
+            td #{issue.id}
+            td
+              - if issue.sent_at.present? || (issue.sent_at.blank? && manager_signed_in?)
+                a href="#{issue_path(issue)}" #{issue.title}
+              - else
+                | Issue will be sent soon!
+            - if manager_signed_in?
+              td.actions
+                a class="btn octicon octicon-pencil" href="#{edit_issue_path(issue)}"
+                - if issue.sent_at.present?
+                  a.btn.disabled.octicon.octicon-clock title="Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}"
+                - else
+                  a class="btn btn-primary octicon octicon-mail" href="#{send_issue_issue_path(issue)}" data-method='post'
+                a class="btn btn-danger octicon octicon-flame" href="#{issue_path(issue)}" data-method="delete"

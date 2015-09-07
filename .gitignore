@@ -6,3 +6,6 @@
 *.swp
 .env
 config/database.yml
+npm-debug.log
+.DS_Store
+vendor/assets/components

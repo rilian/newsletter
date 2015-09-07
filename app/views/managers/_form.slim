@@ -1,12 +1,17 @@
 = @manager.errors.full_messages.join(', ')
 
 = form_for @manager do |f|
-  = f.label :email do
-    | Email
-    = f.text_field :email
-  br
-  = f.label :password do
-    | Password
-    = f.text_field :password, value: ''
-  br
-  = f.submit
+  dl.form
+    dt
+      = f.label :email, 'Email'
+    dd
+      = f.text_field :email
+
+  dl.form
+    dt
+      = f.label :password, 'Password'
+    dd
+      = f.text_field :password, value: ''
+
+  .form-actions
+    = f.submit edit_form_label(@manager), class: 'btn'

@@ -1,0 +1,12 @@
+{
+  "name": "newsletter",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rilian/newsletter",
+  "authors": [
+    "rilian"
+  ],
+  "description": "Newsletter management system powered by Rails",
+  "dependencies": {
+    "primer-css": "~2.1.0"
+  }
+}

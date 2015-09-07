@@ -6,7 +6,7 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title Newsletter
     = csrf_meta_tags
-    = favicon_link_tag 'favicon.ico'
+    = render 'layouts/favicon'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -15,14 +15,13 @@ html
 
     .container
       - flash.each do |key, value|
-        div class="#{flash_class(key)} alert-dismissable"
+        div class="flash #{flash_class(key)}"
+          span.flash-close.js-flash-close.octicon.octicon-x
           = value
 
       = yield
-
-      = render 'subscribers/form'
-
-      sub
-        br
-          | Powered by&nbsp;
-          a href="https://github.com/rilian/newsletter" rilian/newsletter
+      - unless manager_signed_in?
+        = render 'subscribers/form'
+      .footer
+        | Powered by&nbsp;
+        a href="https://github.com/rilian/newsletter" rilian/newsletter

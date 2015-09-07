@@ -1,0 +1,39 @@
+@import '_helpers';
+
+html {
+    font-size: 16px
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  word-break: break-all;
+  thead {
+    border-bottom: 1px solid;
+    border-color: #777;
+  }
+  td:first-child {
+    text-align: left;
+  }
+  td {
+    padding: 5px;
+  }
+  .actions {
+    @include small-breakpoint() {
+      min-width: 0;
+    }
+    min-width: 110px;
+    text-align: center;
+    a + a {
+      margin-left: 10px;
+      @include small-breakpoint() {
+        margin-left: 0;
+      }
+    }
+  }
+}
