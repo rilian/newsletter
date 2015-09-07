@@ -1,14 +1,13 @@
 .columns
-  .one-half.column.centered
+  .three-fourths.column.centered
     h1 #{@issue.title}
 
-    p
+    p.issue-desc
       | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
 
-    ul
+    ul.links-list
       - @issue.links.each do |link|
         li
-          p
-            a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-            br
-            span #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+          a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
+          p.link-desc
+            |  #{link.desc.strip.gsub("\n", '<br/>').html_safe}

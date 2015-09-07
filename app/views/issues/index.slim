@@ -26,9 +26,9 @@
                 | Issue will be sent soon!
             - if manager_signed_in?
               td.actions
-                a class="btn octicon octicon-pencil" href="#{edit_issue_path(issue)}"
+                a class="btn octicon octicon-pencil" href="#{edit_issue_path(issue)}" title="Edit issue"
                 - if issue.sent_at.present?
                   a.btn.disabled.octicon.octicon-clock title="Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}"
                 - else
-                  a class="btn btn-primary octicon octicon-mail" href="#{send_issue_issue_path(issue)}" data-method='post'
-                a class="btn btn-danger octicon octicon-flame" href="#{issue_path(issue)}" data-method="delete"
+                  a class="btn btn-primary octicon octicon-mail" href="#{send_issue_issue_path(issue)}" title="Send issue" data-method='post'
+                a class="btn btn-danger octicon octicon-flame" href="#{issue_path(issue)}" title="Delete issue" data-confirm="Are you sure you want delete issue?" data-method="delete"
