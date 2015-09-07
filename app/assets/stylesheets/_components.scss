@@ -29,4 +29,9 @@ ul.links-list {
 p.issue-desc {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+
+  img {
+    max-height: 500px;
+    max-width: 100%;
+  }
 }
