@@ -1,6 +1,6 @@
 .columns
   = render 'shared/sidebar'
-  div class=main_container_class
+  .column.three-fourths class="#{manager_signed_in? ? '' : 'centered'}"
     h1 Welcome
 
     p

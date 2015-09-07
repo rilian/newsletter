@@ -21,5 +21,5 @@
             td
               a href="#{edit_manager_path(manager)}" #{manager.email}
             td.actions
-              a class="btn octicon octicon-pencil" href="#{edit_manager_path(manager)}"
-              a class="btn btn-danger octicon octicon-flame" href="#{manager_path(manager)}" data-method="delete"
+              a class="btn octicon octicon-pencil" title="Edit manager" href="#{edit_manager_path(manager)}"
+              a class="btn btn-danger octicon octicon-flame" title="Delete manager" data-confirm="Are you sure you want delete manager?" href="#{manager_path(manager)}" data-method="delete"
