@@ -21,7 +21,10 @@ table {
     text-align: left;
   }
   td {
-    padding: 5px;
+    padding: 0.5rem;
+    &.overlapping {
+      @include word-wrap();
+    }
   }
   .actions {
     @include small-breakpoint() {
