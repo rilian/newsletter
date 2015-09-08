@@ -12,7 +12,6 @@ body {
 table {
   width: 100%;
   max-width: 100%;
-  word-break: break-all;
   thead {
     border-bottom: 1px solid;
     border-color: #777;
@@ -21,7 +20,10 @@ table {
     text-align: left;
   }
   td {
-    padding: 5px;
+    padding: 0.5rem;
+    &.overlapping {
+      @include word-wrap();
+    }
   }
   .actions {
     @include small-breakpoint() {
