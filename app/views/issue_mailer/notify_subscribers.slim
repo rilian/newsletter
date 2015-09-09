@@ -1,28 +1,30 @@
-p
-  | Hi #{@subscriber.email.split('@').first},
-  br
-  | #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
-p
-  | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
-p
-  - @issue.links.each do |link|
-    p
-      a href="#{link.url}" target="_blank" #{link.title}
-      br
-      | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
-  br
-  | PS: Your happy number of the week is #{rand(10)}.
-hr
-p
-  | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
-  br
-  | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])} and tell your friends!
-hr
-p
-  sub
-    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe
-    br
-    a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Update your subscription preferences
-    br
-    | Powered by&nbsp;
-    a href="https://github.com/rilian/newsletter" rilian/newsletter
+body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="-webkit-font-smoothing: antialiased;width:100% !important;-webkit-text-size-adjust:none;"
+  div style="width: 100%; height: 35px; background-color: #060D15; padding: 10px"
+    span style="color: #D02630; font-size: 30px" Newsletter
+  div style="padding: 10px"
+    p style="font-size: 18px; margin-bottom: 25px; color: #333;"
+      | Hi #{@subscriber.email.split('@').first}!
+    h1 style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 15px; line-height: 1.1; color: #333;"
+      | #{@issue.title} (#{@issue.sent_at.strftime('%-d %b %Y')})
+    p style="font-size: 18px; margin-bottom: 25px; color: #333;"
+      | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
+    ul
+      - @issue.links.each do |link|
+        li
+          a href="#{link.url}" target="_blank" style="font-size: 18px; color: #4183c4; text-decoration: none;" #{link.title}
+          p style="margin-top: 0;" #{link.desc.strip.gsub("\n", '<br/>').html_safe}
+    p style="font-size: 14px; margin-top: 15px; color: #333;"
+      | PS: Your happy number of the week is #{rand(10)}.
+    div style="border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 14px; color: #333;"
+      p
+        | Read this issue online: #{issue_url(@issue, host: ENV['DOMAIN'])}
+      p
+        | Subscribe to Newsletter: #{root_url(host: ENV['DOMAIN'])} and tell your friends!
+    p style="font-size: 14px; color: #333;"
+      sub
+        a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Unsubscribe
+        br
+        a href="#{manage_subscribers_url(uuid: @subscriber.uuid, host: ENV['DOMAIN'])}" Update your subscription preferences
+        br
+        | Powered by&nbsp;
+        a href="https://github.com/rilian/newsletter" rilian/newsletter
