@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'puma'
 gem 'foreman'
+gem 'airbrake'
 
 group :development do
   gem 'quiet_assets'
