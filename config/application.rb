@@ -35,8 +35,5 @@ module Newsletter
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_mailer.default_options = { from: ENV['MAIL_FROM'] }
-
-    # Add bower components folder in /vendor/assets/components to Asset Pipeline
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
   end
 end
