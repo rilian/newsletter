@@ -57,11 +57,11 @@ class IssuesController < ApplicationController
     # Assign new Links to the Issue
     Link.without_issue.update_all(issue_id: @issue.id)
 
-    @issue.update(sent_at: Time.zone.now)
-
     Subscriber.active.each do |subscriber|
       IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
     end
+
+    @issue.update(sent_at: Time.zone.now)
 
     redirect_to issues_path
   end
