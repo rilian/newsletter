@@ -16,4 +16,5 @@ Rails.application.config.assets.precompile += %w[
   octicons/octicons/octicons.woff
   octicons/octicons/octicons.ttf
   png
+  svg
 ]
