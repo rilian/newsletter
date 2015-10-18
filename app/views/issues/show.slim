@@ -1,6 +1,9 @@
 .columns
   .three-fourths.column.centered
     h1 #{@issue.title}
+    - if @issue.sent_at.present?
+      '
+      span style="font-size:12px; color: grey;" #{@issue.sent_at.strftime('%-d %b %Y')}
 
     p.issue-desc
       | #{@issue.desc.strip.gsub("\n", '<br/>').html_safe}
