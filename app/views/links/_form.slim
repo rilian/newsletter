@@ -1,24 +1,22 @@
 = @link.errors.full_messages.join(', ')
 
 = form_for @link do |f|
+  input type="hidden" name="link[manager_id]" value="#{current_manager.id}"
   dl.form
     dt
       = f.label :title, 'Title'
     dd
       = f.text_field :title
-  
   dl.form
     dt
       = f.label :url, 'URL'
     dd
       = f.text_field :url
-
   dl.form
     dt
       = f.label :desc, 'Description'
     dd
       = f.text_area :desc
-
   dl.form
     dt
       = f.label :issue_id, 'Issue'

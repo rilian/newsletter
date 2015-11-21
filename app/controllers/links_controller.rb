@@ -10,7 +10,6 @@ class LinksController < ApplicationController
   end
 
   def create
-    # TODO: add maneger_id
     @link = Link.new(create_link_params)
     if @link.save
       redirect_to links_path
@@ -41,10 +40,10 @@ class LinksController < ApplicationController
 private
 
   def create_link_params
-    params.require(:link).permit(:url, :desc, :title, :issue_id)
+    params.require(:link).permit(:manager_id, :issue_id, :url, :desc, :title)
   end
 
   def update_link_params
-    params.require(:link).permit(:url, :desc, :title, :issue_id)
+    params.require(:link).permit(:manager_id, :issue_id, :url, :desc, :title)
   end
 end
