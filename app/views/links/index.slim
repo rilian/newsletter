@@ -1,13 +1,11 @@
 .columns
   = render 'shared/sidebar'
   .column class='three-fourths'
-    h1 Links
-
+    h1 Links (#{Link.without_issue.count} new)
     p
       a class='btn btn-sm btn-primary' href="#{new_link_path}"
         span.octicon.octicon-plus
         | New Link
-
     table
       thead
         tr
@@ -25,6 +23,9 @@
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
               br
               = link.desc.strip.gsub("\n", '<br/>').html_safe
+              - if link.manager
+                br
+                | by #{link.manager.email.split('@').first}
             td
               - if link.issue.present?
                 a href="#{issue_path(link.issue)}" ##{link.issue_id}
