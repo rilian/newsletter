@@ -1,7 +1,6 @@
 = @link.errors.full_messages.join(', ')
 
 = form_for @link do |f|
-  input type="hidden" name="link[manager_id]" value="#{current_manager.id}"
   dl.form
     dt
       = f.label :title, 'Title'
@@ -22,5 +21,10 @@
       = f.label :issue_id, 'Issue'
     dd
       = f.select :issue_id, [''] + Issue.all.order(id: :desc).map { |i| [i.title, i.id] }
+  dl.form
+    dt
+      = f.label :manager_id, 'Added by'
+    dd
+      = f.select :manager_id, Manager.all.order(id: :desc).map { |i| [i.email, i.id] }, selected: current_manager.id
   .form-actions
     = f.submit edit_form_label(@link), class: 'btn'
