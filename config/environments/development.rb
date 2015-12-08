@@ -1,4 +1,11 @@
 Rails.application.configure do
+
+  MAIL_DEFAULTS = {
+    host: 'smtp.mandrillapp.com',
+    smtp_port: 587,
+    smtp_auth_method: :plain,
+    starttls: true
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -20,13 +27,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mandrillapp.com',
-    port: 587,
+    address: ENV['MAIL_SMTP_HOST'] || MAIL_DEFAULTS[:host],
+    port: ENV['MAIL_SMTP_PORT'] || MAIL_DEFAULTS[:smtp_port],
     user_name: ENV['MAIL_USER_NAME'],
     password: ENV['MAIL_PASSWORD'],
-    authentication: :plain,
-    enable_starttls_auto: true,
-    domain: ENV['DOMAIN']
+    authentication: (ENV['MAIL_SMTP_AUTH_METHOD'] || MAIL_DEFAULTS[:smtp_auth_method]).to_sym,
+    enable_starttls_auto: !!ENV['MAIL_STARTTLS'] || MAIL_DEFAULTS[:starttls],
+    domain: ENV['MAIL_DOMAIN'] || ENV['DOMAIN']
   }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
