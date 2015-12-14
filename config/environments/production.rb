@@ -1,10 +1,9 @@
 Rails.application.configure do
 
   MAIL_DEFAULTS = {
-    host: 'smtp.mandrillapp.com',
-    smtp_port: 587,
-    smtp_auth_method: :plain,
-    starttls: true
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -76,12 +75,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    address: ENV['MAIL_SMTP_HOST'] || MAIL_DEFAULTS[:host],
-    port: ENV['MAIL_SMTP_PORT'] || MAIL_DEFAULTS[:smtp_port],
+    address: ENV['MAIL_SMTP_HOST'],
+    port: ENV['MAIL_SMTP_PORT'] || MAIL_DEFAULTS[:port],
     user_name: ENV['MAIL_USER_NAME'],
     password: ENV['MAIL_PASSWORD'],
-    authentication: (ENV['MAIL_SMTP_AUTH_METHOD'] || MAIL_DEFAULTS[:smtp_auth_method]).to_sym,
-    enable_starttls_auto: !!ENV['MAIL_STARTTLS'] || MAIL_DEFAULTS[:starttls],
+    authentication: (ENV['MAIL_SMTP_AUTH_METHOD'] || MAIL_DEFAULTS[:authentication]).to_sym,
+    enable_starttls_auto: !!ENV['MAIL_STARTTLS'] || MAIL_DEFAULTS[:enable_starttls_auto],
     domain: ENV['MAIL_DOMAIN'] || ENV['DOMAIN']
   }
 
