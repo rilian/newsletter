@@ -1,4 +1,11 @@
 Rails.application.configure do
+
+  MAIL_DEFAULTS = {
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -68,13 +75,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mandrillapp.com',
-    port: 587,
+    address: ENV['MAIL_SMTP_HOST'],
+    port: ENV['MAIL_SMTP_PORT'] || MAIL_DEFAULTS[:port],
     user_name: ENV['MAIL_USER_NAME'],
     password: ENV['MAIL_PASSWORD'],
-    authentication: :plain,
-    enable_starttls_auto: true,
-    domain: ENV['DOMAIN']
+    authentication: (ENV['MAIL_SMTP_AUTH_METHOD'] || MAIL_DEFAULTS[:authentication]).to_sym,
+    enable_starttls_auto: !!ENV['MAIL_STARTTLS'] || MAIL_DEFAULTS[:enable_starttls_auto],
+    domain: ENV['MAIL_DOMAIN'] || ENV['DOMAIN']
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
