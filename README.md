@@ -17,12 +17,13 @@ Install & Run
 1. `git clone git@github.com:rilian/newsletter.git && cd newsletter`
 2. `bundle install`
 3. `cp config/database.yml.example config/database.yml`
-3. edit `config/database.yml` and put database settings
-4. `cp .env.example .env`
-5. edit `.env` file and put your secret settings
-6. `rake db:setup`
-7. `rails s`
-8. open `http://0.0.0.0:3000`
+4. edit `config/database.yml` and put database settings
+5. `cp .env.example .env`
+6. edit `.env` file and put your secret settings
+7. `rake db:setup`
+8. `bower install -f` to install bower components
+9. `rails s`
+10. open `http://0.0.0.0:3000`
 
 It is recommended to sign up on a great email delivery service
 [Mandrill](https://mandrillapp.com/) which offers 12000 free deliveries
