@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new
+    @link = Link.new(new_link_params)
   end
 
   def create
@@ -38,6 +38,10 @@ class LinksController < ApplicationController
   end
 
 private
+
+  def new_link_params
+    params.require(:link).permit(:url, :desc, :title)
+  end
 
   def create_link_params
     params.require(:link).permit(:manager_id, :issue_id, :url, :desc, :title)
