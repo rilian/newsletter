@@ -9,5 +9,7 @@
     nav.masthead-nav
       - if manager_signed_in?
         = link_to 'Sign out', destroy_manager_session_path, method: :delete
+        javascript:
+          document.writeln('<a href="'+bookmarkletUrl()+'">Bookmarklet</a>');
       - else
         = link_to 'Sign in', new_session_path(:manager)
