@@ -21,9 +21,10 @@ Install & Run
 5. `cp .env.example .env`
 6. edit `.env` file and put your secret settings
 7. `rake db:setup`
-8. `bower install -f` to install bower components
-9. `rails s`
-10. open `http://0.0.0.0:3000`
+8. `npm install -g bower`
+9. `bower install -f` to install bower components
+10. `rails s`
+11. open `http://0.0.0.0:3000`
 
 It is recommended to sign up on a great email delivery service
 [Mandrill](https://mandrillapp.com/) which offers 12000 free deliveries
