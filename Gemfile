@@ -13,6 +13,7 @@ gem 'devise'
 gem 'puma'
 gem 'foreman'
 gem 'airbrake'
+gem 'sprockets-rails', '<3.0' # 3.0 has breaking changes
 
 group :development do
   gem 'quiet_assets'

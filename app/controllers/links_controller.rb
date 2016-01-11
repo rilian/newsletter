@@ -6,7 +6,12 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new(new_link_params)
+    @link =
+      if params[:link].present?
+        Link.new(new_link_params)
+      else
+        Link.new
+      end
   end
 
   def create
