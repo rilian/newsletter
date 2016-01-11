@@ -1,7 +1,7 @@
 .column.one-fourth
   - if manager_signed_in?
     nav.menu
-      = sidemenu_link_to('Issues', issues_path, icon: 'mail')
-      = sidemenu_link_to('Links', links_path, icon: 'link')
-      = sidemenu_link_to('Subscribers', subscribers_path, icon: 'person')
-      = sidemenu_link_to('Managers', managers_path, icon: 'squirrel')
+      = sidemenu_link_to("Issues, #{Issue.count}", issues_path, icon: 'mail')
+      = sidemenu_link_to("Links, #{Link.without_issue.count} new", links_path, icon: 'link')
+      = sidemenu_link_to("Subscribers, #{Subscriber.active.count} active", subscribers_path, icon: 'person')
+      = sidemenu_link_to("Managers, #{Manager.count}", managers_path, icon: 'squirrel')
