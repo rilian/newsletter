@@ -24,7 +24,7 @@
               br
               - if link.time_to_read
                 br
-                div Estimated time to read: #{link.time_to_read}
+                span #{link.time_to_read}
               = link.desc.strip.gsub("\n", '<br/>').html_safe
               - if link.manager
                 br
