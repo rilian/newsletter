@@ -4,15 +4,17 @@ class Link < ActiveRecord::Base
   belongs_to :issue
   belongs_to :manager
 
-  validates :url, presence: true, uniqueness: true
-
-  scope :without_issue, ->() { where(issue_id: nil) }
+  PARAMS_TO_OMIT = %w[utm_source utm_medium]
 
   delegate :title, to: :issue, prefix: true, allow_nil: true
 
   before_save :cleanup_link
 
-  PARAMS_TO_OMIT = %w[utm_source utm_medium]
+  validates :url, presence: true, uniqueness: true
+
+  scope :without_issue, ->() { where(issue_id: nil) }
+
+private
 
   def cleanup_link
     self.url = URI(url).tap do |parsed_url|
