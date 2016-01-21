@@ -18,12 +18,14 @@ private
 
   def cleanup_link
     self.url = URI(url).tap do |parsed_url|
-      parsed_url.query = parsed_url.query
-        .split('&').lazy
-        .map { |param| param.split('=') }
-        .reject { |param| PARAMS_TO_OMIT.include? param.first }
-        .map { |param| param.join('=') }
-        .to_a.join('&')
+      if parsed_url.query
+        parsed_url.query = parsed_url.query
+          .split('&').lazy
+          .map { |param| param.split('=') }
+          .reject { |param| PARAMS_TO_OMIT.include? param.first }
+          .map { |param| param.join('=') }
+          .to_a.join('&')
+      end
     end.to_s
   end
 end
