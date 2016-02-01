@@ -12,7 +12,7 @@ body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="-webki
       - @issue.links.each do |link|
         li
           a href="#{link.url}" target="_blank" style="font-size: 18px; color: #4183c4; text-decoration: none;" #{link.title}
-          span #{link.time_to_read ? "(#{link.time_to_read})" : ''}
+          span #{link.time_to_read ? " (#{link.time_to_read})" : ''}
           p style="margin-top: 0;" #{link.desc.strip.gsub("\n", '<br/>').html_safe}
     p style="font-size: 14px; margin-top: 15px; color: #333;"
       | PS: Your happy number of the week is #{rand(10)}.
