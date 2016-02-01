@@ -18,6 +18,11 @@
       = f.text_area :desc
   dl.form
     dt
+      = f.label :time_to_read, 'Estimated time to read'
+    dd
+      = f.text_field :time_to_read
+  dl.form
+    dt
       = f.label :issue_id, 'Issue'
     dd
       = f.select :issue_id, [''] + Issue.all.order(id: :desc).map { |i| [i.title, i.id] }

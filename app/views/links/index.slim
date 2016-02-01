@@ -21,6 +21,9 @@
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
               br
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
+              - if link.time_to_read
+                span
+                |  (#{link.time_to_read})
               br
               = link.desc.strip.gsub("\n", '<br/>').html_safe
               - if link.manager

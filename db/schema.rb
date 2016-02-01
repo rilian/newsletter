@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121160431) do
+ActiveRecord::Schema.define(version: 20160118115624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 20151121160431) do
   end
 
   create_table "links", force: :cascade do |t|
-    t.string   "url",        null: false
+    t.string   "url",          null: false
     t.text     "desc"
     t.integer  "issue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "title"
     t.integer  "manager_id"
+    t.string   "time_to_read"
   end
 
   add_index "links", ["issue_id"], name: "index_links_on_issue_id", using: :btree
