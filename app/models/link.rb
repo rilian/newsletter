@@ -27,5 +27,7 @@ private
           .to_a.join('&')
       end
     end.to_s
+  rescue URI::InvalidURIError
+    url
   end
 end
