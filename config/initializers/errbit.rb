@@ -1,7 +1,8 @@
-Airbrake.configure do |config|
-  config.environment = Rails.env
-  config.ignore_environments = %w[test]
-  config.host = ENV['ERRBIT_HOST']
-  config.project_id = true
-  config.project_key = ENV['ERRBIT_API_KEY']
+if ENV['RAILS_ENV'] == 'production'
+  Airbrake.configure do |config|
+    config.api_key = ENV['ERRBIT_API_KEY']
+    config.host = ENV['ERRBIT_HOST']
+    config.port = 80
+    config.secure = config.port == 443
+  end
 end
