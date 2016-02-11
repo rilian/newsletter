@@ -32,3 +32,4 @@
                 - else
                   a class="btn btn-primary octicon octicon-mail" href="#{send_issue_issue_path(issue)}" title="Send issue" data-method='post'
                 a class="btn btn-danger octicon octicon-flame" href="#{issue_path(issue)}" title="Delete issue" data-confirm="Are you sure you want delete issue?" data-method="delete"
+        = paginate @issues

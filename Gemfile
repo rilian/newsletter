@@ -5,6 +5,7 @@ gem 'rails', '4.2.5.1'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'devise'
+gem 'kaminari'
 
 # Frontend
 gem 'sass-rails'
