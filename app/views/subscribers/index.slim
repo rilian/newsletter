@@ -26,3 +26,4 @@
             td #{s.created_at.strftime('%d %b %Y')}
             td.actions
               a class="btn octicon octicon-pencil" title="Edit subscriber" href="#{manage_subscribers_path(uuid: s.uuid)}"
+        = paginate @subscribers
