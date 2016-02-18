@@ -11,7 +11,7 @@ class Link < ActiveRecord::Base
   before_save :cleanup_link
 
   validates :url, presence: true, uniqueness: true
-  validates :time_to_read, numericality: { greater_than: 0 }
+  validates :time_to_read, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 
   scope :without_issue, ->() { where(issue_id: nil) }
 
