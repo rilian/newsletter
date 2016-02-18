@@ -21,7 +21,7 @@
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
               br
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
-              - if link.time_to_read
+              - if link.time_to_read.present?
                 span
                 |  (#{link.time_to_read} mins)
               br
