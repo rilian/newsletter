@@ -10,3 +10,4 @@ npm-debug.log
 .DS_Store
 vendor/assets/components
 public/assets
+.byebug_history
