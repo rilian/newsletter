@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'devise'
