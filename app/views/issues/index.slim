@@ -2,17 +2,16 @@
   = render 'shared/sidebar'
   .column class="#{manager_signed_in? ? 'three-fourths' : ''}"
     h1 Issues
-
     p
       a class='btn btn-sm btn-primary' href="#{new_issue_path}"
         span.octicon.octicon-plus
         | New Issue
-
     table
       thead
         tr
           th #
           th Title
+          th Date
           - if manager_signed_in?
             th.actions Actions
       tbody
@@ -24,6 +23,8 @@
                 a href="#{issue_path(issue)}" #{issue.title}
               - else
                 | Issue will be sent soon!
+            td
+              = issue.created_at.strftime('%e %b')
             - if manager_signed_in?
               td.actions
                 a class="btn octicon octicon-pencil" href="#{edit_issue_path(issue)}" title="Edit issue"
