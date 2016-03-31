@@ -27,7 +27,7 @@ private
           .map { |param| param.join('=') }
           .to_a.join('&')
       end
-    end.to_s
+    end.to_s.chomp('?')
   rescue URI::InvalidURIError
     url
   end
