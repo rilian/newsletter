@@ -9,7 +9,7 @@ gem 'kaminari'
 
 # Frontend
 gem 'sass-rails'
-gem 'uglifier'
+gem 'uglifier', '<3'
 gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
