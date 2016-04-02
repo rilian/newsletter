@@ -2,7 +2,8 @@ class LinksController < ApplicationController
   before_action :authenticate_manager!
 
   def index
-    @links = Link.page(params[:page]).all.order('issue_id IS NOT NULL').order(id: :desc)
+    @q = Link.ransack(params[:q])
+    @links = @q.result.page(params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
   end
 
   def new

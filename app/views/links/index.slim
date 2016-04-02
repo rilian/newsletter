@@ -2,6 +2,11 @@
   = render 'shared/sidebar'
   .column class='three-fourths'
     h1 Links (#{Link.without_issue.count} new)
+    = search_form_for @q, url: links_path do |f|
+      .search-form-field
+        = f.text_field :url_or_title_cont, placeholder: 'URL or title'
+      .search-form-field
+        button.btn.btn-default type="submit" Search
     p
       a class='btn btn-sm btn-primary' href="#{new_link_path}"
         span.octicon.octicon-plus

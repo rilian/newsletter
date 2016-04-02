@@ -6,6 +6,7 @@ gem 'pg'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'kaminari'
+gem 'ransack'
 
 # Frontend
 gem 'sass-rails'
