@@ -35,5 +35,7 @@ module Newsletter
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_mailer.default_options = { from: ENV['MAIL_FROM'] }
+
+    config.filter_parameters << :password
   end
 end
