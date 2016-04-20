@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   belongs_to :issue
   belongs_to :manager
 
-  PARAMS_TO_OMIT = %w[utm_source utm_medium]
+  PARAMS_TO_OMIT = %w[utm_source utm_medium utm_campaign]
 
   delegate :title, to: :issue, prefix: true, allow_nil: true
 

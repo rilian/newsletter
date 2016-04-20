@@ -8,6 +8,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'sentry-raven'
 gem 'puma'
+gem 'ransack'
 
 # Frontend
 gem 'sass-rails'
