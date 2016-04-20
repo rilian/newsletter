@@ -6,6 +6,8 @@ gem 'pg'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'kaminari'
+gem 'sentry-raven'
+gem 'puma'
 
 # Frontend
 gem 'sass-rails'
@@ -25,7 +27,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'airbrake', '<5.0' # 5.0 has issues with configuration
-  gem 'puma'
   gem 'foreman', require: false
 end
