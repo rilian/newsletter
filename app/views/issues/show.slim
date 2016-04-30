@@ -12,6 +12,6 @@
       - @issue.links.each do |link|
         li
           a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
-          span #{link.time_to_read.present? && link.time_to_read > 0 ? " (#{link.time_to_read} mins)" : ''}
+          span #{link.time_to_read.present? && link.time_to_read > 0 ? " (#{link.time_to_read} mins reading)" : ''}
           p.link-desc
             |  #{link.desc.strip.gsub("\n", '<br/>').html_safe}
