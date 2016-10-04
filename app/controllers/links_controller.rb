@@ -49,14 +49,14 @@ private
   STORE_PARAMS = %i[manager_id issue_id] + LINK_PARAMS
 
   def new_link_params
-    params.require(:link).permit(LINK_PARAMS)
+    params.require(:link).permit(*LINK_PARAMS, tag_list: [])
   end
 
   def create_link_params
-    params.require(:link).permit(STORE_PARAMS)
+    params.require(:link).permit(*STORE_PARAMS, tag_list: [])
   end
 
   def update_link_params
-    params.require(:link).permit(STORE_PARAMS)
+    params.require(:link).permit(*STORE_PARAMS, tag_list: [])
   end
 end
