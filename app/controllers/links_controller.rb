@@ -3,7 +3,12 @@ class LinksController < ApplicationController
 
   def index
     @q = Link.ransack(params[:q])
-    @links = @q.result.page(params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
+    @links =
+      if params[:tag].present?
+        Link.tagged_with(params[:tag])
+      else
+        @q.result
+      end.page(params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
   end
 
   def new
