@@ -15,6 +15,8 @@ class Link < ActiveRecord::Base
 
   scope :without_issue, ->() { where(issue_id: nil) }
 
+  acts_as_taggable
+
 private
 
   def cleanup_link

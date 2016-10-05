@@ -1,27 +1,14 @@
 .columns
-  = render 'shared/sidebar'
-  .column class='three-fourths'
-    h1 Links (#{Link.without_issue.count} new)
-    = search_form_for @q, url: links_path do |f|
-      .search-form-field
-        = f.text_field :url_or_title_cont, placeholder: 'URL or title'
-      .search-form-field
-        button.btn.btn-default type="submit" Search
-    p
-      a class='btn btn-sm btn-primary' href="#{new_link_path}"
-        span.octicon.octicon-plus
-        | New Link
+  .column.three-fourths
+    h1 Links
     table
       thead
         tr
-          th #
           th Info
           th Issue
-          th.actions Actions
       tbody
         - @links.each do |link|
           tr
-            td #{link.id}
             td.overlapping
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
               - link.tag_list.each do |tag|
@@ -35,14 +22,11 @@
               br
               = link.desc.strip.gsub("\n", '<br/>').html_safe
               - if link.manager
-              br
+                br
                 | by #{link.manager.email.split('@').first}
             td
               - if link.issue.present?
                 a href="#{issue_path(link.issue)}" ##{link.issue_id}
               - else
                 span
-            td.actions
-              a class="btn octicon octicon-pencil" title="Edit link" href="#{edit_link_path(link)}"
-              a class="btn btn-danger octicon octicon-flame" title="Delete link" data-confirm="Are you sure you want delete link?"  href="#{link_path(link)}" data-method="delete"
         = paginate @links

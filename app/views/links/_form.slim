@@ -23,6 +23,11 @@
       = f.text_field :time_to_read
   dl.form
     dt
+      = f.label :tag_list, 'Tag'
+    dd
+      = f.select :tag_list, @link.tags, {}, {class: 'select-tags', multiple: ''}
+  dl.form
+    dt
       = f.label :issue_id, 'Issue'
     dd
       = f.select :issue_id, [''] + Issue.all.order(id: :desc).map { |i| [i.title, i.id] }

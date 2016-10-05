@@ -3,4 +3,5 @@
  *= require octicons/octicons/sprockets-octicons
  *= require_tree .
  *= require_self
+ *= require select2
  */

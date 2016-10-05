@@ -9,6 +9,7 @@ gem 'kaminari'
 gem 'sentry-raven'
 gem 'puma'
 gem 'ransack'
+gem 'acts-as-taggable-on'
 
 # Frontend
 gem 'sass-rails'
@@ -18,6 +19,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'sprockets-rails', '<3.0' # 3.0 has breaking changes
+gem 'select2-rails'
 
 group :development do
   gem 'quiet_assets'

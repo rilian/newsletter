@@ -12,6 +12,9 @@
           li
             p
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
+              - link.tag_list.each do |tag|
+                span.tag
+                  a href="#{links_path(tag: tag)}" #{tag}
               br
               | #{link.desc.strip.gsub("\n", '<br/>').html_safe}
 
