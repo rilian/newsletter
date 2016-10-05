@@ -2,18 +2,14 @@ class LinksController < ApplicationController
   before_action :authenticate_manager!, except: :index
 
   def index
-    if manager_signed_in?
-      @q = Link.ransack(params[:q])
-      result =
-        if params[:tag].present?
-          Link.tagged_with(params[:tag])
-        else
-          @q.result
-        end
-      @links = result.page(params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
-    elsif params[:tag].present?
-      @links = Link.where.not(issue_id: nil).tagged_with(params[:tag])
-        .page(params[:page]).order(id: :desc)
+    @q = Link.ransack(params[:q])
+
+    @links = LinkFilter.new(
+      authenticated: manager_signed_in?,
+      params: params,
+    ).execute
+
+    unless manager_signed_in?
       render 'search_by_tag'
     end
   end
