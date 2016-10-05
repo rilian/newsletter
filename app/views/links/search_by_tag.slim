@@ -1,5 +1,5 @@
 .columns
-  .column class='three-fourths'
+  .column.three-fourths
     h1 Links
     table
       thead
@@ -22,7 +22,7 @@
               br
               = link.desc.strip.gsub("\n", '<br/>').html_safe
               - if link.manager
-              br
+                br
                 | by #{link.manager.email.split('@').first}
             td
               - if link.issue.present?
