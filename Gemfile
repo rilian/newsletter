@@ -25,6 +25,18 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'database_rewinder'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'timecop'
+  gem 'simplecov', require: false
+  gem 'selenium-webdriver'
+end
+
 group :development, :test do
   gem 'byebug'
 end
