@@ -20,6 +20,17 @@ describe ManagersController, type: :controller do
       end
     end
 
+    context 'with invalid params' do
+      it 'renders form' do
+        allow_any_instance_of(Manager).to receive(:update).and_return(false)
+
+        post :update, id: target_manager.id, manager: { email: 'something@example.com' }
+
+        expect(subject).to render_template :edit
+        expect(response.status).to eq 200
+      end
+    end
+
     context 'when manager does not exist' do
       it 'redirects to root page with error' do
         patch :update, id: 0

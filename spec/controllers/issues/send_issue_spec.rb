@@ -5,6 +5,7 @@ describe IssuesController, type: :controller do
     let(:manager) { create :manager }
     let(:issue) { create :issue }
     let!(:link) { create :link }
+    let!(:subscriber) { create :subscriber }
 
     context 'when issue is not sent' do
       it 'sends issue' do
@@ -16,6 +17,7 @@ describe IssuesController, type: :controller do
         expect(assigns(:issue)).to eq issue
         expect(issue.sent_at).not_to be_nil
         expect(link.issue_id).to eq issue.id
+        expect(ActionMailer::Base.deliveries.count).to eq 1
 
         expect(subject).to redirect_to issues_path
         expect(response.status).to eq 302

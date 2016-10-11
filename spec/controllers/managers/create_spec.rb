@@ -14,5 +14,14 @@ describe ManagersController, type: :controller do
         expect(response.status).to eq 302
       end
     end
+
+    context 'with invalid params' do
+      it 'renders form' do
+        post :create, manager: { email: '' }
+
+        expect(subject).to render_template :new
+        expect(response.status).to eq 200
+      end
+    end
   end
 end

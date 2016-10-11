@@ -15,5 +15,16 @@ describe SubscribersController, type: :controller do
         expect(response.status).to eq 302
       end
     end
+
+    context 'with invalid params' do
+      it 'renders form' do
+        allow_any_instance_of(Subscriber).to receive(:update).and_return(false)
+
+        patch :update, id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false }
+
+        expect(subject).to render_template :manage
+        expect(response.status).to eq 200
+      end
+    end
   end
 end

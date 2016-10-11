@@ -19,6 +19,17 @@ describe IssuesController, type: :controller do
       end
     end
 
+    context 'with invalid params' do
+      it 'renders form' do
+        allow_any_instance_of(Issue).to receive(:update).and_return(false)
+
+        post :update, id: issue.id, issue: {title: '', desc: ''}
+
+        expect(subject).to render_template :edit
+        expect(response.status).to eq 200
+      end
+    end
+
     context 'when issue does not exist' do
       it 'redirects to root page with error' do
         patch :update, id: 0
