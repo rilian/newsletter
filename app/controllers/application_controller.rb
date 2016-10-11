@@ -5,4 +5,14 @@ class ApplicationController < ActionController::Base
 
   include Concerns::SentryConfigs
   before_action :set_raven_context
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    respond_to do |f|
+      f.json { render json: { errors: [*e.message] }, status: :not_found }
+      f.html do
+        flash[:error] = e.message
+        redirect_to root_path
+      end
+    end
+  end
 end

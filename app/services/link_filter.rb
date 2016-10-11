@@ -26,7 +26,7 @@ private
           .tagged_with(@params[:tag])
           .page(@params[:page]).order(id: :desc)
       else
-        []
+        Link.none
       end
     end
   end

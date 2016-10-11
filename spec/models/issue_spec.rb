@@ -17,7 +17,6 @@ describe Issue, type: :model do
 
       it 'generates title on save if not specified' do
         expect(issue.title).to eq("Issue ##{issue.id}")
-        issue.save
       end
     end
   end

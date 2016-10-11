@@ -10,7 +10,11 @@ class LinksController < ApplicationController
     ).execute
 
     unless manager_signed_in?
-      render 'search_by_tag'
+      if params[:tag].nil?
+        redirect_to new_manager_session_path
+      else
+        render 'search_by_tag'
+      end
     end
   end
 
