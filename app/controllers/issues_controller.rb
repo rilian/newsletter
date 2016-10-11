@@ -60,7 +60,7 @@ class IssuesController < ApplicationController
     @issue.update(sent_at: Time.zone.now)
 
     Subscriber.active.find_each(batch_size: 10) do |subscriber|
-      IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
+      IssueMailer.notify_subscriber(issue: @issue, subscriber: subscriber).deliver_now
     end
 
     redirect_to issues_path

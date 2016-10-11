@@ -14,6 +14,7 @@ describe IssuesController, type: :controller do
         expect(Issue.count).to eq 1
 
         issue = Issue.first
+
         expect(issue.title).to eq "Issue ##{issue.id}"
         expect(issue.links).to match_array [first_link, second_link]
 

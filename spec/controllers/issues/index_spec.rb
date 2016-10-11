@@ -7,6 +7,7 @@ describe IssuesController do
       get :index
 
       expect(assigns(:issues)).to match_array [first_issue, second_issue]
+
       expect(subject).to render_template :index
       expect(response.status).to eq 200
     end

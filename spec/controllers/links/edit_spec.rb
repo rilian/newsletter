@@ -10,6 +10,7 @@ describe LinksController, type: :controller do
         get :edit, id: link.id
 
         expect(assigns(:link)).to eq link
+
         expect(subject).to render_template :edit
         expect(response.status).to eq 200
       end
@@ -21,6 +22,7 @@ describe LinksController, type: :controller do
 
         expect(flash[:error]).to eq "Couldn't find Link with 'id'=0"
         expect(assigns(:link)).to eq nil
+
         expect(subject).to redirect_to root_url
         expect(response.status).to eq 302
       end

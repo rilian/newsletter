@@ -40,6 +40,7 @@ describe LinksController, type: :controller do
 
         expect(flash[:error]).to eq "Couldn't find Link with 'id'=0"
         expect(assigns(:link)).to eq nil
+
         expect(subject).to redirect_to root_url
         expect(response.status).to eq 302
       end

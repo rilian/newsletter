@@ -6,7 +6,9 @@ describe LinksController do
       context 'when tag param specified' do
         it 'renders index template' do
           sign_in(manager)
+
           get :index, { tag: 'test' }
+
           expect(response).to render_template(:index)
           expect(response.status).to eq 200
         end
