@@ -24,10 +24,37 @@ describe Link, type: :model do
     it { is_expected.to validate_presence_of(:url) }
     it { is_expected.to validate_numericality_of(:time_to_read).is_greater_than_or_equal_to(0) }
 
-    it 'removes utm codes from link params' do
-      link = described_class.new(url: 'google.com?a=b&utm_source=x')
-      link.save
-      expect(link.url).to eq 'google.com?a=b'
+    it 'validates uniqueness of url' do
+      described_class.new(url: 'example.com').save
+
+      expect(described_class.new(url: 'example.com').save).to eq false
+      expect(described_class.all.count).to eq 1
+    end
+  end
+
+  describe 'Callbacks' do
+    context 'with link cleanup before saving' do
+      context 'with valid url' do
+        it 'removes utm codes from url params' do
+          link = described_class.new(url: 'example.com?a=b&utm_source=x')
+          link.save
+
+          expect(link.url).to eq 'example.com?a=b'
+        end
+      end
+
+      context 'with invalid url' do
+        before do
+          allow_any_instance_of(URI::Generic).to receive(:query).and_raise(URI::InvalidURIError)
+        end
+
+        it 'rescues from URI::InvalidURIError error and does not change url' do
+          link = described_class.new(url: 'example.com?a=b&utm_source=x')
+          link.save
+
+          expect(link.url).to eq 'example.com?a=b&utm_source=x'
+        end
+      end
     end
   end
 end
