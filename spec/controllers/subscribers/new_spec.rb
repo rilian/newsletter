@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe SubscribersController, type: :controller do
   describe 'GET :new' do
     it 'returns new subscriber page' do

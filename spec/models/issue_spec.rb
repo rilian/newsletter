@@ -1,5 +1,7 @@
+# frozen_string_literal: true
 describe Issue, type: :model do
   describe 'Database' do
+    it { is_expected.to have_db_column(:id).of_type(:integer) }
     it { is_expected.to have_db_column(:title).of_type(:string) }
     it { is_expected.to have_db_column(:desc).of_type(:text) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe ManagersController, type: :controller do
   describe 'PATCH :update' do
     before { sign_in(manager) }
@@ -21,9 +22,11 @@ describe ManagersController, type: :controller do
     end
 
     context 'with invalid params' do
-      it 'renders form' do
+      before do
         allow_any_instance_of(Manager).to receive(:update).and_return(false)
+      end
 
+      it 'renders form' do
         post :update, id: target_manager.id, manager: { email: 'something@example.com' }
 
         expect(subject).to render_template :edit

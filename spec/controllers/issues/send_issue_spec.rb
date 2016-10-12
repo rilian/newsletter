@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe IssuesController, type: :controller do
   describe 'POST :send_issue' do
     before { sign_in(manager) }

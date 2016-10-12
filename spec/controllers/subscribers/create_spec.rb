@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 describe SubscribersController, type: :controller do
   describe 'POST :create' do
     context 'with valid params' do
       it 'creates subscriber' do
         post :create, subscriber: { email: 'mail@example.com' }
 
-        subscriber = Subscriber.where(email: 'mail@example.com').first
+        subscriber = Subscriber.find_by_email('mail@example.com')
 
         expect(assigns(:subscriber)).to eq subscriber
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe IssuesController, type: :controller do
   describe 'GET :show' do
     let(:manager) { create :manager }
@@ -5,9 +6,11 @@ describe IssuesController, type: :controller do
     let(:issue) { create :issue }
 
     context 'with authentication' do
-      it 'shows issue page' do
+      before do
         sign_in manager
+      end
 
+      it 'shows issue page' do
         get :show, id: issue.id
 
         expect(assigns(:issue)).to eq issue
@@ -19,9 +22,11 @@ describe IssuesController, type: :controller do
 
     context 'without authentication' do
       context 'with sent issue' do
-        it 'shows sent issue' do
+        before do
           issue.update(sent_at: Time.zone.now)
+        end
 
+        it 'shows sent issue' do
           get :show, id: issue.id
 
           expect(assigns(:issue)).to eq issue
@@ -31,7 +36,7 @@ describe IssuesController, type: :controller do
         end
       end
 
-      context 'with not sent issue ' do
+      context 'with not sent issue' do
         it 'does not show not sent issue' do
           get :show, id: issue.id
 
@@ -42,9 +47,11 @@ describe IssuesController, type: :controller do
     end
 
     context 'when issue does not exist' do
-      it 'redirects to root page with error' do
+      before do
         sign_in manager
+      end
 
+      it 'redirects to root page with error' do
         post :send_issue, id: 0
 
         expect(flash[:error]).to eq "Couldn't find Issue with 'id'=0"

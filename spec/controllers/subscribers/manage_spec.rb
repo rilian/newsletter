@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe SubscribersController, type: :controller do
   describe 'GET :manage' do
     let(:subscriber) { create :subscriber }

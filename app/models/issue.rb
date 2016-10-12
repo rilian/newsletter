@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Issue < ActiveRecord::Base
   has_many :links
 

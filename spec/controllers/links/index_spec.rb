@@ -1,13 +1,16 @@
+# frozen_string_literal: true
 describe LinksController do
   describe 'GET index' do
     let(:manager) { create :manager }
 
-    context 'with manager' do
+    context 'with authentication' do
       context 'when tag param specified' do
-        it 'renders index template' do
+        before do
           sign_in(manager)
+        end
 
-          get :index, { tag: 'test' }
+        it 'renders index template' do
+          get :index, tag: 'test'
 
           expect(response).to render_template(:index)
           expect(response.status).to eq 200
@@ -15,17 +18,19 @@ describe LinksController do
       end
     end
 
-    context 'with guest' do
+    context 'without authentication' do
       context 'when tag param specified' do
-        let!(:first_link) { create(:link, tag_list: ['tag', 'first_tag']) }
-        let!(:second_link) { create(:link, tag_list: ['tag', 'second_tag']) }
+        let!(:first_link) { create(:link, tag_list: %w[tag first_tag]) }
+        let!(:second_link) { create(:link, tag_list: %w[tag second_tag]) }
         let!(:issue) { create :issue }
 
-        it 'renders search_by_tag template' do
+        before do
           Link.without_issue.update_all(issue_id: issue.id)
           issue.update(sent_at: Time.zone.now)
+        end
 
-          get :index, { tag: 'first_tag' }
+        it 'renders search_by_tag template' do
+          get :index, tag: 'first_tag'
 
           expect(assigns(:links)).to include first_link
           expect(assigns(:links)).not_to include second_link

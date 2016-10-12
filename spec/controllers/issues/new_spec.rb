@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 describe IssuesController, type: :controller do
   describe 'GET :new' do
-    before { sign_in manager}
+    before { sign_in manager }
 
     let(:manager) { create :manager }
 

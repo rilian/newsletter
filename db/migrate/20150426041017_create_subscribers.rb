@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateSubscribers < ActiveRecord::Migration
   def change
     create_table :subscribers do |t|

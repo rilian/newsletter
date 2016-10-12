@@ -1,16 +1,14 @@
+# frozen_string_literal: true
 describe IssueMailer do
   describe 'Notify subscriber' do
-    let!(:issue) { create :issue }
-    let!(:link) { create :link }
+    let!(:issue) { create :issue, sent_at: Time.zone.now }
+    let!(:link) { create :link, issue_id: issue.id }
 
-    let(:subscriber)  { create :subscriber }
+    let(:subscriber) { create :subscriber }
 
     let(:mail_delivery) { ActionMailer::Base.deliveries.first }
 
     it 'sends issue' do
-      link.update(issue_id: issue.id)
-      issue.update(sent_at: Time.zone.now)
-
       described_class.notify_subscriber(issue: issue, subscriber: subscriber).deliver_now
 
       expect(mail_delivery.subject).to eq "[#{ENV['ISSUE_MAIL_SUBJECT']}] #{issue.title}"

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe SubscribersController, type: :controller do
   describe 'PATCH :update' do
     let(:subscriber) { create :subscriber }
@@ -17,9 +18,11 @@ describe SubscribersController, type: :controller do
     end
 
     context 'with invalid params' do
-      it 'renders form' do
+      before do
         allow_any_instance_of(Subscriber).to receive(:update).and_return(false)
+      end
 
+      it 'renders form' do
         patch :update, id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false }
 
         expect(subject).to render_template :manage

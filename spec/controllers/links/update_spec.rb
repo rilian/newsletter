@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 describe LinksController, type: :controller do
   describe 'PATCH :update' do
     before { sign_in(manager) }
 
     let(:manager) { create :manager }
-    let(:link) { create :link, {url: 'example.com' } }
+    let(:link) { create :link, url: 'example.com' }
 
     context 'with valid params' do
       it 'updates link' do

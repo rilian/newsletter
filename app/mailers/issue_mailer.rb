@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class IssueMailer < ActionMailer::Base
   default from: ENV['MAIL_FROM']
 

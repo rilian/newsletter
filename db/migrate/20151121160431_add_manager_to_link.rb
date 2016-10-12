@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddManagerToLink < ActiveRecord::Migration
   def change
     add_column :links, :manager_id, :integer

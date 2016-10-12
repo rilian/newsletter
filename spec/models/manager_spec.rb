@@ -1,5 +1,7 @@
+# frozen_string_literal: true
 describe Manager, type: :model do
   describe 'Database' do
+    it { is_expected.to have_db_column(:id).of_type(:integer) }
     it { is_expected.to have_db_column(:email).of_type(:string).with_options(null: false) }
     it { is_expected.to have_db_column(:encrypted_password).of_type(:string).with_options(null: false, default: '') }
     it { is_expected.to have_db_column(:reset_password_token).of_type(:string) }

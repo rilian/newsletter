@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe SubscribersController do
   describe 'GET index' do
     before { sign_in manager }

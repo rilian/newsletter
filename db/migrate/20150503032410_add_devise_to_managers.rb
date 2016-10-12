@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddDeviseToManagers < ActiveRecord::Migration
   def self.up
     change_table(:managers) do |t|

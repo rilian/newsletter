@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 # Backend
@@ -23,6 +24,8 @@ gem 'select2-rails'
 
 group :development do
   gem 'quiet_assets'
+  gem 'rubocop', '0.37.0', require: false
+  gem 'rubocop-rspec', '1.3.0', require: false
 end
 
 group :test do

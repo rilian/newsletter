@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe IssuesController, type: :controller do
   describe 'POST :create' do
     before { sign_in(manager) }
@@ -9,7 +10,7 @@ describe IssuesController, type: :controller do
 
     context 'with valid params' do
       it 'creates issue' do
-        post :create, issue: {title: '', desc: ''}
+        post :create, issue: { title: '', desc: '' }
 
         expect(Issue.count).to eq 1
 
@@ -26,10 +27,12 @@ describe IssuesController, type: :controller do
     end
 
     context 'with invalid params' do
-      it 'renders form' do
+      before do
         allow_any_instance_of(Issue).to receive(:save).and_return(false)
+      end
 
-        post :create, issue: {title: '', desc: ''}
+      it 'renders form' do
+        post :create, issue: { title: '', desc: '' }
 
         expect(subject).to render_template :new
         expect(response.status).to eq 200

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe ManagersController, type: :controller do
   describe 'DELETE :destroy' do
     before { sign_in manager }

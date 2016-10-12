@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class LinksController < ApplicationController
   before_action :authenticate_manager!, except: :index
 
@@ -6,7 +7,7 @@ class LinksController < ApplicationController
 
     @links = LinkFilter.new(
       authenticated: manager_signed_in?,
-      params: params,
+      params: params
     ).execute
 
     unless manager_signed_in?

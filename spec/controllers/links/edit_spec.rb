@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe LinksController, type: :controller do
   describe 'GET :edit' do
     before { sign_in manager }

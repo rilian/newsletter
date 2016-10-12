@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe ApplicationHelper do
   describe '.flash_class' do
     it 'returns proper class for flash type' do
@@ -7,7 +8,7 @@ describe ApplicationHelper do
     end
   end
 
-  describe 'sidemenu_link_to' do
+  describe 'sidemenu_link_to call' do
     let(:text) { 'text' }
     let(:path) { 'links' }
 
@@ -24,7 +25,7 @@ describe ApplicationHelper do
     end
 
     context 'with icon param' do
-      let(:options) { {icon: 'link'} }
+      let(:options) { { icon: 'link' } }
       let(:expected_result) do
         link_to(path, options) do
           "<span class='octicon octicon-#{options[:icon]}'></span>#{text}".html_safe

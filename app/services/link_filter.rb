@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class LinkFilter
   def initialize(authenticated:, params:)
     @authenticated = authenticated
@@ -21,10 +22,12 @@ private
       search_result.page(@params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
     else
       if @params[:tag].present?
-        Link.where.not(issue_id: nil)
-          .joins(:issue).where.not(issues: { sent_at: nil })
+        Link
+          .joins(:issue)
+          .where.not(issue_id: nil, issues: { sent_at: nil })
           .tagged_with(@params[:tag])
-          .page(@params[:page]).order(id: :desc)
+          .page(@params[:page])
+          .order(id: :desc)
       else
         Link.none
       end

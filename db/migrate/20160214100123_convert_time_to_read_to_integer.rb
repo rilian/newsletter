@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ConvertTimeToReadToInteger < ActiveRecord::Migration
   def change
     remove_column :links, :time_to_read

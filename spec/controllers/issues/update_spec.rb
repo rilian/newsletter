@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe IssuesController, type: :controller do
   describe 'PATCH :update' do
     before { sign_in(manager) }
@@ -20,10 +21,12 @@ describe IssuesController, type: :controller do
     end
 
     context 'with invalid params' do
-      it 'renders form' do
+      before do
         allow_any_instance_of(Issue).to receive(:update).and_return(false)
+      end
 
-        post :update, id: issue.id, issue: {title: '', desc: ''}
+      it 'renders form' do
+        post :update, id: issue.id, issue: { title: '', desc: '' }
 
         expect(subject).to render_template :edit
         expect(response.status).to eq 200

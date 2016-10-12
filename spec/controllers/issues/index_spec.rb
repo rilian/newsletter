@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe IssuesController do
   describe 'GET :index' do
     let!(:first_issue) { create :issue }

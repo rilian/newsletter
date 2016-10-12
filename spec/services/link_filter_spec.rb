@@ -1,27 +1,34 @@
+# frozen_string_literal: true
 describe LinkFilter do
   subject { described_class.new(authenticated: authenticated, params: params) }
 
   let(:result) { subject.execute }
 
-  let!(:sent_issue) { create :issue}
-  let!(:not_sent_issue) { create :issue}
+  let!(:sent_issue) { create :issue }
+  let!(:not_sent_issue) { create :issue }
 
-  let!(:simple_link) { create :link, { title: 'Simple link' } }
-  let!(:special_link) { create :link, { title: 'Special link' } }
+  let!(:simple_link) { create :link, title: 'Simple link' }
+  let!(:special_link) { create :link, title: 'Special link' }
 
-  let!(:unissued_tagged_link) { create :link, { title: 'Unissued tagged link',
-                                                tag_list: ['tag',  'unissued'] } }
+  let!(:unissued_tagged_link) do
+    create :link, title: 'Unissued tagged link',
+                  tag_list: %w[tag unissued]
+  end
 
-  let!(:attached_to_not_sent_issue_tagged_link) { create :link, { title: 'Unissued tagged link',
-                                                                  tag_list: ['tag',  'unissued'],
-                                                                  issue_id: not_sent_issue.id} }
+  let!(:attached_to_not_sent_issue_tagged_link) do
+    create :link, title: 'Unissued tagged link',
+                  tag_list: %w[tag unissued],
+                  issue_id: not_sent_issue.id
+  end
 
-  let!(:issued_tagged_link) { create :link, { title: 'Issued tagged link',
-                                              tag_list: ['tag', 'issued'],
-                                              issue_id: sent_issue.id } }
+  let!(:issued_tagged_link) do
+    create :link, title: 'Issued tagged link',
+                  tag_list: %w[tag issued],
+                  issue_id: sent_issue.id
+  end
 
   before do
-    sent_issue.update({ sent_at: Time.zone.now })
+    sent_issue.update(sent_at: Time.zone.now)
   end
 
   context 'with authentication' do
@@ -32,13 +39,13 @@ describe LinkFilter do
 
       it 'returns search by tag result' do
         expect(result).to include(unissued_tagged_link,
-                                  issued_tagged_link,
-                                  attached_to_not_sent_issue_tagged_link)
+          issued_tagged_link,
+          attached_to_not_sent_issue_tagged_link)
       end
     end
 
     context 'with query param' do
-      let(:params) { { q: {url_or_title_cont: 'special'} } }
+      let(:params) { { q: { url_or_title_cont: 'special' } } }
 
       it 'returns search result' do
         expect(result).not_to include simple_link
@@ -71,7 +78,7 @@ describe LinkFilter do
 
       it 'does not return unissued links' do
         expect(result).not_to include(unissued_tagged_link,
-                                      attached_to_not_sent_issue_tagged_link)
+          attached_to_not_sent_issue_tagged_link)
       end
     end
 

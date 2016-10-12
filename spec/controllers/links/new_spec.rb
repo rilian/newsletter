@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 describe LinksController, type: :controller do
   describe 'GET :new' do
-    before { sign_in manager}
+    before { sign_in manager }
 
     let(:manager) { create :manager }
 
     context 'with link param' do
       it 'returns new link page with filled form fields' do
-        get :new, link: {url: 'abc'}
+        get :new, link: { url: 'abc' }
 
         expect(assigns(:link).url).to eq 'abc'
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Subscriber < ActiveRecord::Base
   include Concerns::Email
   include Concerns::Uuid
