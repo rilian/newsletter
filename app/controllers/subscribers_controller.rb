@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SubscribersController < ApplicationController
   before_action :authenticate_manager!, except: %i[new create update manage]
 

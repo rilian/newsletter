@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+# rubocop:disable Style/DoubleNegation
 Rails.application.configure do
   MAIL_DEFAULTS = {
     port: 587,

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class LinksController < ApplicationController
   before_action :authenticate_manager!, except: :index
 
@@ -6,12 +7,18 @@ class LinksController < ApplicationController
 
     @links = LinkFilter.new(
       authenticated: manager_signed_in?,
-      params: params,
+      params: params
     ).execute
 
+    # rubocop:disable Style/GuardClause
     unless manager_signed_in?
-      render 'search_by_tag'
+      if params[:tag].nil?
+        redirect_to new_manager_session_path
+      else
+        render 'search_by_tag'
+      end
     end
+    # rubocop:enable Style/GuardClause
   end
 
   def new

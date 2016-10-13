@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class IssuesController < ApplicationController
   before_action :authenticate_manager!, except: %i[index show]
 
@@ -8,9 +9,7 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
 
-    if @issue.sent_at.blank? && !manager_signed_in?
-      redirect_to issues_path and return
-    end
+    redirect_to(issues_path) && return if @issue.sent_at.blank? && !manager_signed_in?
   end
 
   def new
@@ -52,7 +51,7 @@ class IssuesController < ApplicationController
 
   def send_issue
     @issue = Issue.find(params[:id])
-    redirect_to issues_path and return if @issue.sent_at.present?
+    redirect_to(issues_path) && return if @issue.sent_at.present?
 
     # Assign new Links to the Issue
     Link.without_issue.update_all(issue_id: @issue.id)
@@ -60,7 +59,7 @@ class IssuesController < ApplicationController
     @issue.update(sent_at: Time.zone.now)
 
     Subscriber.active.find_each(batch_size: 10) do |subscriber|
-      IssueMailer.notify_subscribers(issue: @issue, subscriber: subscriber).deliver_now
+      IssueMailer.notify_subscriber(issue: @issue, subscriber: subscriber).deliver_now
     end
 
     redirect_to issues_path

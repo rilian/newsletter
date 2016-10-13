@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Concerns::Email
   extend ActiveSupport::Concern
 

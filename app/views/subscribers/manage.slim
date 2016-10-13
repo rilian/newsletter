@@ -9,12 +9,8 @@
     = form_for @subscriber do |f|
 
       = hidden_field_tag :uuid, @subscriber.uuid
-      dl.form
-        dt
-          = f.label :email, 'Email'
-        dd
-          = f.text_field :email
 
+      dl.form
       .form-checkbox
         = f.label :is_active do
           = f.check_box :is_active
