@@ -9,9 +9,7 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
 
-    if @issue.sent_at.blank? && !manager_signed_in?
-      redirect_to(issues_path) && return
-    end
+    redirect_to(issues_path) && return if @issue.sent_at.blank? && !manager_signed_in?
   end
 
   def new

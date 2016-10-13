@@ -6,7 +6,10 @@ describe IssuesController, type: :controller do
     let(:manager) { create :manager }
     let(:issue) { create :issue }
     let!(:link) { create :link }
+
+    # rubocop:disable RSpec/LetSetup
     let!(:subscriber) { create :subscriber }
+    # rubocop:enable RSpec/LetSetup
 
     context 'when issue is not sent' do
       it 'sends issue' do

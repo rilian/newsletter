@@ -10,6 +10,7 @@ class LinksController < ApplicationController
       params: params
     ).execute
 
+    # rubocop:disable Style/GuardClause
     unless manager_signed_in?
       if params[:tag].nil?
         redirect_to new_manager_session_path
@@ -17,6 +18,7 @@ class LinksController < ApplicationController
         render 'search_by_tag'
       end
     end
+    # rubocop:enable Style/GuardClause
   end
 
   def new

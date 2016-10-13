@@ -10,8 +10,9 @@ module Concerns::Uuid
 private
 
   def generate_uuid
-    begin
+    loop do
       self.uuid = SecureRandom.uuid
-    end while self.class.exists?(uuid: uuid)
+      break unless self.class.exists?(uuid: uuid)
+    end
   end
 end

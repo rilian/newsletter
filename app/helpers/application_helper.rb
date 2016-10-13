@@ -12,7 +12,7 @@ module ApplicationHelper
     css_class = 'menu-item'
     css_class += ' selected' if current_page?(path)
     options.merge!(class: css_class)
-    if icon = options[:icon]
+    if (icon = options[:icon]).present?
       link_to(path, options) do
         "<span class='octicon octicon-#{icon}'></span>#{text}".html_safe
       end
