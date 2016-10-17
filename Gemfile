@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0.1'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'devise'
@@ -19,11 +19,10 @@ gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'slim-rails'
-gem 'sprockets-rails', '<3.0' # 3.0 has breaking changes
+gem 'sprockets-rails'
 gem 'select2-rails'
 
 group :development do
-  gem 'quiet_assets'
   gem 'rubocop', '0.37.0', require: false
   gem 'rubocop-rspec', '1.3.0', require: false
 end
