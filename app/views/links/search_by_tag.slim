@@ -14,16 +14,9 @@
               - link.tag_list.each do |tag|
                 span.tag
                   a href="#{links_path(tag: tag)}" #{tag}
-              br
-              a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
-              - if link.time_to_read.present? && link.time_to_read > 0
-                span
-                |  (#{link.time_to_read} mins reading)
-              br
-              = link.desc.strip.gsub("\n", '<br/>').html_safe
-              - if link.manager
-                br
-                | by #{link.manager.email.split('@').first}
+              span #{link.time_to_read.present? && link.time_to_read > 0 ? " (#{link.time_to_read} mins reading)" : ''}
+              p.link-desc
+                |  #{link.desc.strip.gsub("\n", '<br/>').html_safe}  
             td
               - if link.issue.present?
                 a href="#{issue_path(link.issue)}" ##{link.issue_id}
