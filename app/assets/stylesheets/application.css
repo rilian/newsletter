@@ -1,6 +1,6 @@
 /*
  *= require framework_and_overrides
- *= require octicons/octicons/sprockets-octicons
+ *= require font-awesome
  *= require_tree .
  *= require_self
  *= require select2

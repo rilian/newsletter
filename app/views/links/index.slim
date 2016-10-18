@@ -9,8 +9,8 @@
         button.btn.btn-default type="submit" Search
     p
       a class='btn btn-sm btn-primary' href="#{new_link_path}"
-        span.octicon.octicon-plus
-        | New Link
+        span.fa.fa-plus
+        |  New Link
     table
       thead
         tr
@@ -43,6 +43,6 @@
               - else
                 span
             td.actions
-              a class="btn octicon octicon-pencil" title="Edit link" href="#{edit_link_path(link)}"
-              a class="btn btn-danger octicon octicon-flame" title="Delete link" data-confirm="Are you sure you want delete link?"  href="#{link_path(link)}" data-method="delete"
+              a class="btn fa fa-pencil" title="Edit link" href="#{edit_link_path(link)}"
+              a class="btn btn-danger fa fa-fire" title="Delete link" data-confirm="Are you sure you want delete link?"  href="#{link_path(link)}" data-method="delete"
         = paginate @links

@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'sprockets-rails'
 gem 'select2-rails'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'rubocop', '0.37.0', require: false
