@@ -1,48 +1,58 @@
 .columns
-  = render 'shared/sidebar'
+  = render 'shared/sidebar' if manager_signed_in?
   .column class='three-fourths'
-    h1 Links (#{Link.without_issue.count} new)
+    h1 Links #{manager_signed_in? ? '( ' + Link.without_issue.count.to_s + ' new  ) ' : ''}
     = search_form_for @q, url: links_path do |f|
       .search-form-field
-        = f.text_field :url_or_title_cont, placeholder: 'URL or title'
+        = f.text_field :url_or_title_or_desc_cont, placeholder: 'URL or title'
       .search-form-field
         button.btn.btn-default type="submit" Search
-    p
-      a class='btn btn-sm btn-primary' href="#{new_link_path}"
-        span.fa.fa-plus
-        |  New Link
+    br
+    - if manager_signed_in?  
+      p
+        a class='btn btn-sm btn-primary' href="#{new_link_path}"
+          span.fa.fa-plus
+          |  New Link 
+      br
+        
     table
       thead
         tr
-          th #
+          - if manager_signed_in?
+            th #
           th Info
           th Issue
-          th.actions Actions
+          - if manager_signed_in?
+            th.actions Actions
       tbody
         - @links.each do |link|
           tr
-            td #{link.id}
+            - if manager_signed_in?
+             td #{link.id}
             td.overlapping
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
               - link.tag_list.each do |tag|
                 span.tag
                   a href="#{links_path(tag: tag)}" #{tag}
               br
-              a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
+              - if manager_signed_in?  
+                a href="#{link.url}" target="_blank" rel="nofollow" #{link.url}
+                br
               - if link.time_to_read.present? && link.time_to_read > 0
                 span
                 |  (#{link.time_to_read} mins reading)
-              br
+              
               = link.desc.strip.gsub("\n", '<br/>').html_safe
-              - if link.manager
-              br
-                | by #{link.manager.email.split('@').first}
+              - if manager_signed_in?
+                br
+                  | by #{link.manager.email.split('@').first}
             td
               - if link.issue.present?
                 a href="#{issue_path(link.issue)}" ##{link.issue_id}
               - else
                 span
-            td.actions
-              a class="btn fa fa-pencil" title="Edit link" href="#{edit_link_path(link)}"
-              a class="btn btn-danger fa fa-fire" title="Delete link" data-confirm="Are you sure you want delete link?"  href="#{link_path(link)}" data-method="delete"
+            - if manager_signed_in?
+              td.actions
+                a class="btn fa fa-pencil" title="Edit link" href="#{edit_link_path(link)}"
+                a class="btn btn-danger fa fa-fire" title="Delete link" data-confirm="Are you sure you want delete link?"  href="#{link_path(link)}" data-method="delete"
         = paginate @links

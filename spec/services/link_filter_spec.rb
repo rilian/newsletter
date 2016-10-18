@@ -45,7 +45,7 @@ describe LinkFilter do
     end
 
     context 'with query param' do
-      let(:params) { { q: { url_or_title_cont: 'special' } } }
+      let(:params) { { q: { url_or_title_or_desc_cont: 'special' } } }
 
       it 'returns search result' do
         expect(result).not_to include simple_link
@@ -60,9 +60,7 @@ describe LinkFilter do
     context 'without tag param' do
       let(:params) { {} }
 
-      it 'returns empty search by tag result' do
-        expect(result).to eq []
-      end
+      it 'returns search by query result'
     end
 
     context 'with non existing tag param' do

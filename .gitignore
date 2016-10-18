@@ -11,3 +11,4 @@ npm-debug.log
 vendor/assets/components
 public/assets
 .byebug_history
+.semaphore-cache
