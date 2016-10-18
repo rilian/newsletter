@@ -28,7 +28,7 @@
         - @links.each do |link|
           tr
             - if manager_signed_in?
-             td #{link.id}
+              td #{link.id}
             td.overlapping
               a href="#{link.url}" target="_blank" rel="nofollow" #{link.title}
               - link.tag_list.each do |tag|
