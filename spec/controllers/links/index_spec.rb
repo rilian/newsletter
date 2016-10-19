@@ -29,11 +29,21 @@ describe LinksController do
           issue.update(sent_at: Time.zone.now)
         end
 
-        it 'renders index template'
+        it 'renders index template' do
+          get :index, tag: 'test'
+
+          expect(response).to render_template(:index)
+          expect(response.status).to eq 200
+        end
       end
 
       context 'when tag param is not specified' do
-        it 'renders index template'
+        it 'renders index template' do
+          get :index, tag: 'test'
+
+          expect(response).to render_template(:index)
+          expect(response.status).to eq 200
+        end
       end
     end
   end

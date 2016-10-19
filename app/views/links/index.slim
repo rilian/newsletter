@@ -43,7 +43,7 @@
                 |  (#{link.time_to_read} mins reading)
               
               = link.desc.strip.gsub("\n", '<br/>').html_safe
-              - if manager_signed_in?
+              - if link.manager.present? && manager_signed_in?
                 br
                   | by #{link.manager.email.split('@').first}
             td
