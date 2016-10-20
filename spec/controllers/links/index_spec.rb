@@ -32,6 +32,8 @@ describe LinksController do
         it 'renders index template' do
           get :index, tag: 'test'
 
+          expect(assigns(:links)).not_to be_nil
+
           expect(response).to render_template(:index)
           expect(response.status).to eq 200
         end
@@ -40,6 +42,8 @@ describe LinksController do
       context 'when tag param is not specified' do
         it 'renders index template' do
           get :index, tag: 'test'
+
+          expect(assigns(:links)).not_to be_nil
 
           expect(response).to render_template(:index)
           expect(response.status).to eq 200
