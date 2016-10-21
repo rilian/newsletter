@@ -7,6 +7,18 @@ RSpec/DescribeClass:
   Enabled: false
 RSpec/FilePath:
   Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/LetSetup:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
