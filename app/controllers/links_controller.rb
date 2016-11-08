@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   before_action :authenticate_manager!, except: :index
 
   def index
-    if params[:tag].blank? && (params[:q].blank? || params[:q].values.all?(&:blank?))
+    if !current_manager && (params[:tag].blank? && (params[:q].blank? || params[:q].values.all?(&:blank?)))
       redirect_to issues_path
       return
     end
