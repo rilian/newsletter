@@ -11,6 +11,7 @@ gem 'sentry-raven'
 gem 'puma'
 gem 'ransack'
 gem 'acts-as-taggable-on'
+gem 'nokogiri', '1.6.7.2'
 
 # Frontend
 gem 'sass-rails'

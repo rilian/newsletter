@@ -16,14 +16,15 @@
       br
         
     table
-      thead
-        tr
-          - if manager_signed_in?
-            th #
-          th Info
-          th Issue
-          - if manager_signed_in?
-            th.actions Actions
+      - if manager_signed_in?
+        thead
+          tr
+            - if manager_signed_in?
+              th #
+            th Info
+            th Issue
+            - if manager_signed_in?
+              th.actions Actions
       tbody
         - @links.each do |link|
           tr
@@ -46,11 +47,12 @@
               - if link.manager.present? && manager_signed_in?
                 br
                   | by #{link.manager.email.split('@').first}
-            td
-              - if link.issue.present?
-                a href="#{issue_path(link.issue)}" ##{link.issue_id}
-              - else
-                span
+            - if manager_signed_in?
+              td
+                - if link.issue.present?
+                  a href="#{issue_path(link.issue)}" ##{link.issue_id}
+                - else
+                  span
             - if manager_signed_in?
               td.actions
                 a class="btn fa fa-pencil" title="Edit link" href="#{edit_link_path(link)}"

@@ -3,6 +3,11 @@ class LinksController < ApplicationController
   before_action :authenticate_manager!, except: :index
 
   def index
+    if params[:tag].blank? && (params[:q].blank? || params[:q].values.all?(&:blank?))
+      redirect_to issues_path
+      return
+    end
+
     @q = Link.ransack(params[:q])
 
     @links = LinkFilter.new(

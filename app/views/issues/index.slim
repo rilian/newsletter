@@ -2,10 +2,11 @@
   = render 'shared/sidebar'
   .column class="#{manager_signed_in? ? 'three-fourths' : ''}"
     h1 Issues
-    p
-      a class='btn btn-sm btn-primary' href="#{new_issue_path}"
-        span.fa.fa-plus
-        |  New Issue
+    - if manager_signed_in?
+      p
+        a class='btn btn-sm btn-primary' href="#{new_issue_path}"
+          span.fa.fa-plus
+          |  New Issue
     table
       thead
         tr
