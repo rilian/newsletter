@@ -10,7 +10,7 @@ module ApplicationHelper
     options.merge!(class: css_class)
     if options[:icon].present?
       link_to(path, options) do
-        "<span class='octicon octicon-#{options[:icon]}'></span>#{text}".html_safe
+        "<span class='fa fa-#{options[:icon]}'></span>#{text}".html_safe
       end
     else
       link_to(text, path, options)

@@ -4,8 +4,8 @@
     h1 Issues
     p
       a class='btn btn-sm btn-primary' href="#{new_issue_path}"
-        span.octicon.octicon-plus
-        | New Issue
+        span.fa.fa-plus
+        |  New Issue
     table
       thead
         tr
@@ -27,10 +27,10 @@
               = issue.created_at.strftime('%e %b')
             - if manager_signed_in?
               td.actions
-                a class="btn octicon octicon-pencil" href="#{edit_issue_path(issue)}" title="Edit issue"
+                a class="btn fa fa-pencil" href="#{edit_issue_path(issue)}" title="Edit issue"
                 - if issue.sent_at.present?
-                  a.btn.disabled.octicon.octicon-clock title="Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}"
+                  a.btn.disabled.fa.fa-clock-o title="Sent #{issue.sent_at.strftime('%H:%M, %-d %b %Y')}"
                 - else
-                  a class="btn btn-primary octicon octicon-mail" href="#{send_issue_issue_path(issue)}" title="Send issue" data-method='post'
-                a class="btn btn-danger octicon octicon-flame" href="#{issue_path(issue)}" title="Delete issue" data-confirm="Are you sure you want delete issue?" data-method="delete"
+                  a class="btn btn-primary fa fa-envelope-o" href="#{send_issue_issue_path(issue)}" title="Send issue" data-method='post'
+                a class="btn btn-danger fa fa-fire" href="#{issue_path(issue)}" title="Delete issue" data-confirm="Are you sure you want delete issue?" data-method="delete"
         = paginate @issues

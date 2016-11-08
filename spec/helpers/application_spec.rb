@@ -28,7 +28,7 @@ describe ApplicationHelper do
       let(:options) { { icon: 'link' } }
       let(:expected_result) do
         link_to(path, options) do
-          "<span class='octicon octicon-#{options[:icon]}'></span>#{text}".html_safe
+          "<span class='fa fa-#{options[:icon]}'></span>#{text}".html_safe
         end
       end
 

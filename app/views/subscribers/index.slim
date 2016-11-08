@@ -5,8 +5,8 @@
 
     p
       a class='btn btn-sm btn-primary' href="#{new_subscriber_path}"
-        span.octicon.octicon-plus
-        | New Subscriber
+        span.fa.fa-plus
+        |  New Subscriber
 
     table
       thead
@@ -25,5 +25,5 @@
             td #{s.is_active ? 'subscribed' : 'unsubscribed' }
             td #{s.created_at.strftime('%d %b %Y')}
             td.actions
-              a class="btn octicon octicon-pencil" title="Edit subscriber" href="#{manage_subscribers_path(uuid: s.uuid)}"
+              a class="btn fa fa-pencil" title="Edit subscriber" href="#{manage_subscribers_path(uuid: s.uuid)}"
         = paginate @subscribers

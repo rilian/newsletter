@@ -38,18 +38,15 @@ describe LinkFilter do
       let(:params) { { tag: 'tag' } }
 
       it 'returns search by tag result' do
-        expect(result).to include(unissued_tagged_link,
-          issued_tagged_link,
-          attached_to_not_sent_issue_tagged_link)
+        expect(result).to match_array [unissued_tagged_link, issued_tagged_link, attached_to_not_sent_issue_tagged_link]
       end
     end
 
     context 'with query param' do
-      let(:params) { { q: { url_or_title_cont: 'special' } } }
+      let(:params) { { q: { url_or_title_or_desc_cont: 'special' } } }
 
       it 'returns search result' do
-        expect(result).not_to include simple_link
-        expect(result).to include special_link
+        expect(result).to match_array special_link
       end
     end
   end
@@ -57,11 +54,11 @@ describe LinkFilter do
   context 'without authentication' do
     let(:authenticated) { false }
 
-    context 'without tag param' do
-      let(:params) { {} }
+    context 'without tag and with query param' do
+      let(:params) { { q: { url_or_title_or_desc_cont: 'issued ' } } }
 
-      it 'returns empty search by tag result' do
-        expect(result).to eq []
+      it 'returns search by query result' do
+        expect(result).to match_array [issued_tagged_link]
       end
     end
 
@@ -77,8 +74,7 @@ describe LinkFilter do
       let(:params) { { tag: 'unissued' } }
 
       it 'does not return unissued links' do
-        expect(result).not_to include(unissued_tagged_link,
-          attached_to_not_sent_issue_tagged_link)
+        expect(result).not_to match_array [unissued_tagged_link, attached_to_not_sent_issue_tagged_link]
       end
     end
 
@@ -86,7 +82,7 @@ describe LinkFilter do
       let(:params) { { tag: 'issued' } }
 
       it 'returns issued link' do
-        expect(result).to include issued_tagged_link
+        expect(result).to match_array [issued_tagged_link]
       end
     end
   end

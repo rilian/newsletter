@@ -20,15 +20,15 @@ private
           Link.ransack(@params[:q]).result
         end
       search_result.page(@params[:page]).order('issue_id IS NOT NULL').order(id: :desc)
-    elsif @params[:tag].present?
-      Link
-        .joins(:issue)
-        .where.not(issue_id: nil, issues: { sent_at: nil })
-        .tagged_with(@params[:tag])
-        .page(@params[:page])
-        .order(id: :desc)
     else
-      Link.none
+      search_result = Link.joins(:issue).where.not(issue_id: nil, issues: { sent_at: nil })
+      search_result =
+        if @params[:tag].present?
+          search_result.tagged_with(@params[:tag])
+        else
+          search_result.ransack(@params[:q]).result
+        end
+      search_result.page(@params[:page]).order(id: :desc)
     end
   end
 end

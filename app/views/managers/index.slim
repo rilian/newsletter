@@ -5,8 +5,8 @@
 
     p
       a class='btn btn-sm btn-primary' href="#{new_manager_path}"
-        span.octicon.octicon-plus
-        | New Manager
+        span.fa.fa-plus
+        |  New Manager
 
     table.manager-table
       thead
@@ -21,6 +21,6 @@
             td
               a href="#{edit_manager_path(manager)}" #{manager.email}
             td.actions
-              a class="btn octicon octicon-pencil" title="Edit manager" href="#{edit_manager_path(manager)}"
-              a class="btn btn-danger octicon octicon-flame" title="Delete manager" data-confirm="Are you sure you want delete manager?" href="#{manager_path(manager)}" data-method="delete"
+              a class="btn fa fa-pencil" title="Edit manager" href="#{edit_manager_path(manager)}"
+              a class="btn btn-danger fa fa-fire" title="Delete manager" data-confirm="Are you sure you want delete manager?" href="#{manager_path(manager)}" data-method="delete"
         = paginate @managers

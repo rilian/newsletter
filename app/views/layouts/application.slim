@@ -16,7 +16,7 @@ html
     .container
       - flash.each do |key, value|
         div class="flash #{flash_class(key)}"
-          span.flash-close.js-flash-close.octicon.octicon-x
+          span.flash-close.js-flash-close.fa.fa-times
           = value
 
       = yield

@@ -17,6 +17,8 @@ RSpec/NamedSubject:
   Enabled: false
 RSpec/AnyInstance:
   Enabled: false
+RSpec/LetSetup:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
