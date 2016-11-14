@@ -59,7 +59,11 @@ class IssuesController < ApplicationController
     @issue.update(sent_at: Time.zone.now)
 
     Subscriber.active.find_each(batch_size: 10) do |subscriber|
-      IssueMailer.notify_subscriber(issue: @issue, subscriber: subscriber).deliver_now
+      begin
+        IssueMailer.notify_subscriber(issue: @issue, subscriber: subscriber).deliver_now
+      rescue
+        puts "Invalid email #{subscriber.email}"
+      end
     end
 
     redirect_to issues_path
