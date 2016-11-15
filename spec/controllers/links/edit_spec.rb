@@ -8,7 +8,7 @@ describe LinksController, type: :controller do
 
     context 'when link exists' do
       it 'returns link edit page' do
-        get :edit, id: link.id
+        get :edit, params:  { id: link.id }
 
         expect(assigns(:link)).to eq link
 
@@ -19,7 +19,7 @@ describe LinksController, type: :controller do
 
     context 'when link does not exist' do
       it 'redirects to root page with error' do
-        patch :update, id: 0
+        patch :update, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Link with 'id'=0"
         expect(assigns(:link)).to eq nil

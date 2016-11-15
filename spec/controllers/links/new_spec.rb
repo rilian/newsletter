@@ -7,7 +7,7 @@ describe LinksController, type: :controller do
 
     context 'with link param' do
       it 'returns new link page with filled form fields' do
-        get :new, link: { url: 'abc' }
+        get :new, params: { link: { url: 'abc' } }
 
         expect(assigns(:link).url).to eq 'abc'
 

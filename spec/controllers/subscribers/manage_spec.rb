@@ -4,7 +4,7 @@ describe SubscribersController, type: :controller do
     let(:subscriber) { create :subscriber }
 
     it 'returns subscriber manage page' do
-      get :manage, uuid: subscriber.uuid
+      get :manage, params: { uuid: subscriber.uuid }
 
       expect(assigns(:subscriber)).to eq subscriber
 

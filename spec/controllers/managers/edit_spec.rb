@@ -9,7 +9,7 @@ describe ManagersController, type: :controller do
 
     context 'when manager exists' do
       it 'returns issue edit page' do
-        get :edit, id: target_manager.id
+        get :edit, params: { id: target_manager.id }
 
         expect(assigns(:manager)).to eq target_manager
 
@@ -20,7 +20,7 @@ describe ManagersController, type: :controller do
 
     context 'when manager does not exist' do
       it 'redirects to root page with error' do
-        get :edit, id: 0
+        get :edit, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Manager with 'id'=0"
         expect(assigns(:manager)).to eq nil

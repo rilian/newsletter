@@ -3,7 +3,7 @@ describe SubscribersController, type: :controller do
   describe 'POST :create' do
     context 'with valid params' do
       it 'creates subscriber' do
-        post :create, subscriber: { email: 'mail@example.com' }
+        post :create, params: { subscriber: { email: 'mail@example.com' } }
 
         subscriber = Subscriber.find_by_email('mail@example.com')
 
@@ -16,7 +16,7 @@ describe SubscribersController, type: :controller do
 
     context 'with invalid params' do
       it 'renders form' do
-        post :create, subscriber: { email: '' }
+        post :create, params: { subscriber: { email: '' } }
 
         expect(subject).to render_template :new
         expect(response.status).to eq 200

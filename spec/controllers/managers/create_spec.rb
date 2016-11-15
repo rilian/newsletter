@@ -7,7 +7,7 @@ describe ManagersController, type: :controller do
 
     context 'with valid params' do
       it 'creates manager' do
-        post :create, manager: { email: 'mail@example.com', password: '1234567890' }
+        post :create, params: { manager: { email: 'mail@example.com', password: '1234567890' } }
 
         expect(assigns(:manager)).to eq Manager.where(email: 'mail@example.com').first
 
@@ -18,7 +18,7 @@ describe ManagersController, type: :controller do
 
     context 'with invalid params' do
       it 'renders form' do
-        post :create, manager: { email: '' }
+        post :create, params: { manager: { email: '' } }
 
         expect(subject).to render_template :new
         expect(response.status).to eq 200

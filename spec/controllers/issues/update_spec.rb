@@ -8,7 +8,7 @@ describe IssuesController, type: :controller do
 
     context 'with valid params' do
       it 'updates issue' do
-        patch :update, id: issue.id, issue: { desc: 'Test' }
+        patch :update, params: { id: issue.id, issue: { desc: 'Test' } }
 
         issue.reload
 
@@ -26,7 +26,7 @@ describe IssuesController, type: :controller do
       end
 
       it 'renders form' do
-        post :update, id: issue.id, issue: { title: '', desc: '' }
+        post :update, params: { id: issue.id, issue: { title: '', desc: '' } }
 
         expect(subject).to render_template :edit
         expect(response.status).to eq 200
@@ -35,7 +35,7 @@ describe IssuesController, type: :controller do
 
     context 'when issue does not exist' do
       it 'redirects to root page with error' do
-        patch :update, id: 0
+        patch :update, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Issue with 'id'=0"
         expect(assigns(:issue)).to eq nil
