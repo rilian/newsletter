@@ -12,3 +12,4 @@ vendor/assets/components
 public/assets
 .byebug_history
 .semaphore-cache
+coverage
