@@ -8,7 +8,7 @@ describe IssuesController, type: :controller do
 
     context 'when issue exists' do
       it 'deletes issue' do
-        delete :destroy, id: issue.id
+        delete :destroy, params: { id: issue.id }
 
         expect(Issue.count).to eq 0
 
@@ -19,7 +19,7 @@ describe IssuesController, type: :controller do
 
     context 'when issue does not exist' do
       it 'redirects to root page with error' do
-        delete :destroy, id: 0
+        delete :destroy, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Issue with 'id'=0"
         expect(subject).to redirect_to root_url

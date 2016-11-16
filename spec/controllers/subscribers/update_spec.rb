@@ -5,7 +5,7 @@ describe SubscribersController, type: :controller do
 
     context 'with valid params' do
       it 'updates subscriber' do
-        patch :update, id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false }
+        patch :update, params: { id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false } }
 
         subscriber.reload
 
@@ -23,7 +23,7 @@ describe SubscribersController, type: :controller do
       end
 
       it 'renders form' do
-        patch :update, id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false }
+        patch :update, params: { id: subscriber.id, uuid: subscriber.uuid, subscriber: { is_active: false } }
 
         expect(subject).to render_template :manage
         expect(response.status).to eq 200

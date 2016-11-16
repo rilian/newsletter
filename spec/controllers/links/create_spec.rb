@@ -7,7 +7,7 @@ describe LinksController, type: :controller do
 
     context 'with valid params' do
       it 'creates link' do
-        post :create, link: { url: 'example.com' }
+        post :create, params: { link: { url: 'example.com' } }
 
         expect(Link.count).to eq 1
 
@@ -23,7 +23,7 @@ describe LinksController, type: :controller do
 
     context 'with invalid params' do
       it 'does not create link' do
-        post :create, link: { url: nil }
+        post :create, params: { link: { url: nil } }
 
         expect(Link.count).to eq 0
 

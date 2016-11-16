@@ -9,7 +9,7 @@ describe ManagersController, type: :controller do
 
     context 'with valid params' do
       it 'updates manager' do
-        patch :update, id: target_manager.id, manager: { email: 'something@example.com' }
+        patch :update, params: { id: target_manager.id, manager: { email: 'something@example.com' } }
 
         target_manager.reload
 
@@ -27,7 +27,7 @@ describe ManagersController, type: :controller do
       end
 
       it 'renders form' do
-        post :update, id: target_manager.id, manager: { email: 'something@example.com' }
+        post :update, params: { id: target_manager.id, manager: { email: 'something@example.com' } }
 
         expect(subject).to render_template :edit
         expect(response.status).to eq 200
@@ -36,7 +36,7 @@ describe ManagersController, type: :controller do
 
     context 'when manager does not exist' do
       it 'redirects to root page with error' do
-        patch :update, id: 0
+        patch :update, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Manager with 'id'=0"
         expect(assigns(:manager)).to eq nil

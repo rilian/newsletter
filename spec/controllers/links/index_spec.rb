@@ -10,7 +10,7 @@ describe LinksController do
         end
 
         it 'renders index template' do
-          get :index, tag: 'test'
+          get :index, params: { tag: 'test' }
 
           expect(response).to render_template(:index)
           expect(response.status).to eq 200
@@ -30,7 +30,7 @@ describe LinksController do
         end
 
         it 'renders index template' do
-          get :index, tag: 'test'
+          get :index, params: { tag: 'test' }
 
           expect(assigns(:links)).not_to be_nil
 
@@ -41,7 +41,7 @@ describe LinksController do
 
       context 'when tag param is not specified' do
         it 'renders index template' do
-          get :index, tag: 'test'
+          get :index, params: { tag: 'test' }
 
           expect(assigns(:links)).not_to be_nil
 

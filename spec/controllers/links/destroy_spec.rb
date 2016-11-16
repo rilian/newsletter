@@ -8,7 +8,7 @@ describe LinksController, type: :controller do
 
     context 'when link exists' do
       it 'deletes link' do
-        delete :destroy, id: link.id
+        delete :destroy, params: { id: link.id }
 
         expect(Link.count).to eq 0
 
@@ -19,7 +19,7 @@ describe LinksController, type: :controller do
 
     context 'when link does not exist' do
       it 'redirects to root page with error' do
-        delete :destroy, id: 0
+        delete :destroy, params:  { id: 0 }
 
         expect(Link.count).to eq 0
 

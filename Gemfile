@@ -12,6 +12,7 @@ gem 'puma'
 gem 'ransack'
 gem 'acts-as-taggable-on'
 gem 'nokogiri', '1.6.7.2'
+gem 'sidekiq'
 
 # Frontend
 gem 'sass-rails'
@@ -39,6 +40,7 @@ group :test do
   gem 'timecop'
   gem 'simplecov', require: false
   gem 'selenium-webdriver'
+  gem 'rspec-sidekiq'
 end
 
 group :development, :test do

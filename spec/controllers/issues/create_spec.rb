@@ -10,7 +10,7 @@ describe IssuesController, type: :controller do
 
     context 'with valid params' do
       it 'creates issue' do
-        post :create, issue: { title: '', desc: '' }
+        post :create, params: { issue: { title: '', desc: '' } }
 
         expect(Issue.count).to eq 1
 
@@ -32,7 +32,7 @@ describe IssuesController, type: :controller do
       end
 
       it 'renders form' do
-        post :create, issue: { title: '', desc: '' }
+        post :create, params: { issue: { title: '', desc: '' } }
 
         expect(subject).to render_template :new
         expect(response.status).to eq 200

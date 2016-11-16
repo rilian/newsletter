@@ -8,7 +8,7 @@ describe IssuesController, type: :controller do
 
     context 'when issue exists' do
       it 'returns issue edit page' do
-        get :edit, id: issue.id
+        get :edit, params: { id: issue.id }
 
         expect(assigns(:issue)).to eq issue
 
@@ -19,7 +19,7 @@ describe IssuesController, type: :controller do
 
     context 'when issue does not exist' do
       it 'redirects to root page with error' do
-        patch :update, id: 0
+        patch :update, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Issue with 'id'=0"
         expect(assigns(:issue)).to eq nil

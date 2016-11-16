@@ -51,20 +51,7 @@ class IssuesController < ApplicationController
 
   def send_issue
     @issue = Issue.find(params[:id])
-    redirect_to(issues_path) && return if @issue.sent_at.present?
-
-    # Assign new Links to the Issue
-    Link.without_issue.update_all(issue_id: @issue.id)
-
-    @issue.update(sent_at: Time.zone.now)
-
-    Subscriber.active.find_each(batch_size: 10) do |subscriber|
-      begin
-        IssueMailer.notify_subscriber(issue: @issue, subscriber: subscriber).deliver_now
-      rescue
-        puts "Invalid email #{subscriber.email}"
-      end
-    end
+    IssueSender.new(@issue).perform unless @issue.sent_at.present?
 
     redirect_to issues_path
   end

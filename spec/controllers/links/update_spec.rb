@@ -8,7 +8,7 @@ describe LinksController, type: :controller do
 
     context 'with valid params' do
       it 'updates link' do
-        patch :update, id: link.id, link: { url: 'other_example.com' }
+        patch :update, params: { id: link.id, link: { url: 'other_example.com' } }
 
         link.reload
         expect(link.url).to eq 'other_example.com'
@@ -22,7 +22,7 @@ describe LinksController, type: :controller do
 
     context 'with invalid params' do
       it 'does not update link' do
-        patch :update, id: link.id, link: { url: nil }
+        patch :update, params: { id: link.id, link: { url: nil } }
 
         link.reload
         expect(link.url).to eq 'example.com'
@@ -37,7 +37,7 @@ describe LinksController, type: :controller do
 
     context 'when link does not exist' do
       it 'redirects to root page with error' do
-        patch :update, id: 0
+        patch :update, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Link with 'id'=0"
         expect(assigns(:link)).to eq nil

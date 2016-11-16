@@ -11,7 +11,7 @@ describe IssuesController, type: :controller do
       end
 
       it 'shows issue page' do
-        get :show, id: issue.id
+        get :show, params: { id: issue.id }
 
         expect(assigns(:issue)).to eq issue
 
@@ -27,7 +27,7 @@ describe IssuesController, type: :controller do
         end
 
         it 'shows sent issue' do
-          get :show, id: issue.id
+          get :show, params: { id: issue.id }
 
           expect(assigns(:issue)).to eq issue
 
@@ -38,7 +38,7 @@ describe IssuesController, type: :controller do
 
       context 'with not sent issue' do
         it 'does not show not sent issue' do
-          get :show, id: issue.id
+          get :show, params: { id: issue.id }
 
           expect(subject).to redirect_to issues_path
           expect(response.status).to eq 302
@@ -52,7 +52,7 @@ describe IssuesController, type: :controller do
       end
 
       it 'redirects to root page with error' do
-        post :send_issue, id: 0
+        post :send_issue, params: { id: 0 }
 
         expect(flash[:error]).to eq "Couldn't find Issue with 'id'=0"
         expect(assigns(:issue)).to eq nil
