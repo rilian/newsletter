@@ -2,11 +2,7 @@
   = render 'shared/sidebar' if manager_signed_in?
   .column class='three-fourths'
     h1 Links #{manager_signed_in? ? '( ' + Link.without_issue.count.to_s + ' new  ) ' : ''}
-    = search_form_for @q, url: links_path do |f|
-      .search-form-field
-        = f.text_field :url_or_title_or_desc_cont, placeholder: 'URL or title'
-      .search-form-field
-        button.btn.btn-default type="submit" Search
+    = render 'search_form'
     br
     - if manager_signed_in?  
       p
