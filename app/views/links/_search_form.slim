@@ -2,6 +2,6 @@ h2
   | Search in past issues
 = search_form_for @q, url: links_path do |f|
   .search-form-field
-    = f.text_field :url_or_title_or_desc_cont, placeholder: 'URL or text'
+    = f.text_field :url_or_title_or_desc_cont, placeholder: 'URL or text', id: "search-field"
   .search-form-field
-    button.btn.btn-default type="submit" Search
+    button.btn.btn-default type="submit" id="search-button" Search

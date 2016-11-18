@@ -5,7 +5,7 @@ class LinkFilter
     @params = params
   end
 
-  def execute
+  def perform
     links
   end
 

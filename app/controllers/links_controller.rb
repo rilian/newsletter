@@ -13,7 +13,7 @@ class LinksController < ApplicationController
     @links = LinkFilter.new(
       authenticated: manager_signed_in?,
       params: params
-    ).execute
+    ).perform
   end
 
   def new

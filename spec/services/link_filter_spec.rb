@@ -2,7 +2,7 @@
 describe LinkFilter do
   subject { described_class.new(authenticated: authenticated, params: params) }
 
-  let(:result) { subject.execute }
+  let(:result) { subject.perform }
 
   let!(:sent_issue) { create :issue }
   let!(:not_sent_issue) { create :issue }
