@@ -3,7 +3,8 @@ class SubscribersController < ApplicationController
   before_action :authenticate_manager!, except: %i[new create update manage]
 
   def index
-    @subscribers = Subscriber.page(params[:page]).all.order(id: :desc)
+    @q = Subscriber.ransack(params[:q])
+    @subscribers = @q.result.page(params[:page]).order(id: :desc)
   end
 
   def new
