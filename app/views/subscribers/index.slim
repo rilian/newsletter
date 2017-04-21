@@ -2,11 +2,19 @@
   = render 'shared/sidebar'
   .column class='three-fourths'
     h1 Subscribers
-
-    p
-      a class='btn btn-sm btn-primary' href="#{new_subscriber_path}"
-        span.fa.fa-plus
-        |  New Subscriber
+  
+    div style='display: flex; justify-content: space-between; margin-bottom: 30px;'
+      div style='display: inline-block'
+        = search_form_for @q, url: subscribers_path do |f|
+          .search-form-field
+            = f.text_field :email_cont, placeholder: 'Email', id: 'search-field'
+          .search-form-field
+            button.btn.btn-default type="submit" id="search-button" Search
+            
+      div style='display: inline-block'
+        a class='btn btn-sm btn-primary' href="#{new_subscriber_path}"
+          span.fa.fa-plus
+          |  New Subscriber
 
     table
       thead
