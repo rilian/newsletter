@@ -25,7 +25,7 @@
               - else
                 | Issue will be sent soon!
             td
-              = issue.created_at.strftime('%e %b')
+              = issue.created_at.strftime('%e %b %Y')
             - if manager_signed_in?
               td.actions
                 a class="btn fa fa-pencil" href="#{edit_issue_path(issue)}" title="Edit issue"
