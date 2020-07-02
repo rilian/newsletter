@@ -1,11 +1,8 @@
 .masthead
-  .container
+  .masthead-container
     a.masthead-logo href="#{root_path}"
-      .dynamic-logo
-        div.rails
-        div.lighting
-        div.reactor
-      span.newsletter Newsletter
+      .proxet
+      .newsletter newsletter
     nav.masthead-nav
       - if manager_signed_in?
         = link_to 'Sign out', destroy_manager_session_path, method: :delete

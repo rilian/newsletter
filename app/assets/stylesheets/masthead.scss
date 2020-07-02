@@ -1,44 +1,80 @@
 @import 'variables';
-@import 'logo';
+@import 'helpers';
 
 .masthead {
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
-  text-align: center;
   background-color: #060D15;
+  background-image: image-url('bg.png');
+  display: flex;
+  justify-content: center;
+  .masthead-container {
+    flex: 1 1 100%;
+    max-width: 1020px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
   a {
-    color: rgba(255,255,255,0.5);
-    &:hover {
-      color: $rr-red;
-      text-decoration: none;
-    }
+    color: #fff;
+    text-decoration: none;
   }
   .masthead-logo {
-    display: inline-block;
     font-size: 1.5rem;
     color: #fff;
+    .proxet {
+      display: inline-block;
+      position: relative;
+      height: 60px;
+      width: 247px;
+      background-image: image-url('Proxet.png');
+      background-size: cover;
+    }
   }
 }
+
 
 @media (min-width: 34em) {
   .masthead {
     text-align:left;
-    .masthead-logo {
-      color: transparent;
-      &:hover {
-        color: transparent;
-      }
-      float: left;
-      .newsletter {
-        display: inline-block;
-        vertical-align: center;
-        width: 170px;
-        background-image: image-url('Newsletter.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
+    .masthead-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
+    .masthead-logo {
+      width: 337px;
+      display: flex;
+      justify-content: space-between;
+      > * {
+        transition: all 0.3s ease-in, transform 0.1s ease-in, font-size 0.3s ease-in;
+      }
+      .proxet {
+        display: inline-block;
+        position: relative;
+        height: 60px;
+        width: 50px;
+        background-image: image-url('Proxet.png');
+        background-size: cover;
+      }
+      .newsletter {
+        font-size: 54px;
+        font-family: 'Inter', sans-serif;
+        line-height: 0.9;
+        height: 60px;
+        display: inline-block;
+        width: 270px;
+        text-align: left;
+      }
+      &:hover .newsletter {
+        font-size: 16px;
+        width: 82px;
+      }
+      &:hover .proxet {
+        width: 247px;
+      }
     }
   }
 }
@@ -61,7 +97,6 @@
     border-top: 0.075rem solid rgba(255,255,255,0.25);
   }
   @media (min-width: 34em) {
-    float:right;
     margin-top: .5rem;
   }
 }
