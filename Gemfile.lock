@@ -112,12 +112,12 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.6.1)
     minitest (5.10.1)
     multipart-post (2.0.0)
     nio4r (1.2.1)
-    nokogiri (1.11.4)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parser (2.4.0.0)
@@ -282,7 +282,7 @@ DEPENDENCIES
   foreman
   jquery-rails
   kaminari
-  nokogiri (= 1.11.4)
+  nokogiri (= 1.12.5)
   pg
   puma
   rails (= 5.0.0.1)
