@@ -11,7 +11,7 @@ gem 'sentry-raven'
 gem 'puma'
 gem 'ransack'
 gem 'acts-as-taggable-on'
-gem 'nokogiri', '1.11.4'
+gem 'nokogiri', '1.13.5'
 gem 'sidekiq'
 
 # Frontend
